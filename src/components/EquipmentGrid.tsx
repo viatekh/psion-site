@@ -4,14 +4,20 @@ import { useMemo, useState } from "react";
 import { GearItem, categoryIcon } from "@/data/equipment";
 import { GearIcon } from "./GearIcon";
 
-const categories: GearItem["category"][] = ["Decks", "Mixers", "Sound", "Lighting", "Cabling & Rigging"];
+const categories: GearItem["category"][] = [
+  "Decks",
+  "Mixers",
+  "Speakers & PA",
+  "Effects",
+  "Rigging & Cabling",
+];
 
 export function EquipmentGrid({ items }: { items: GearItem[] }) {
   const [filter, setFilter] = useState<GearItem["category"] | null>(null);
 
-  const visible = useMemo(
-    () => (filter ? items.filter((i) => i.category === filter) : items),
-    [items, filter]
+  const visibleCategories = useMemo(
+    () => (filter ? categories.filter((c) => c === filter) : categories),
+    [filter]
   );
 
   return (
@@ -38,20 +44,34 @@ export function EquipmentGrid({ items }: { items: GearItem[] }) {
         ))}
       </div>
 
-      <div className="grid grid-cols-1 gap-4 p-6 sm:grid-cols-2 lg:grid-cols-3 lg:p-12">
-        {visible.map((item) => (
-          <div key={item.name} className="border border-line p-6">
-            <GearIcon type={categoryIcon[item.category]} className="h-20 w-20 text-accent" />
-            <p className="mt-4 font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-              {item.category}
-            </p>
-            <p className="mt-1 text-lg text-foreground">{item.name}</p>
-            {item.spec && <p className="mt-0.5 text-sm text-muted">{item.spec}</p>}
-            <p className="mt-3 font-mono text-[11px] uppercase tracking-[0.1em] text-muted">
-              {item.quantity}
-            </p>
-          </div>
-        ))}
+      <div className="px-6 py-6 lg:px-12 lg:py-10">
+        {visibleCategories.map((category) => {
+          const categoryItems = items.filter((i) => i.category === category);
+          if (categoryItems.length === 0) return null;
+          return (
+            <div key={category} className="mb-14 last:mb-0">
+              <div className="flex items-center gap-4">
+                <GearIcon type={categoryIcon[category]} className="h-12 w-12 shrink-0 text-accent" />
+                <h2 className="text-xl text-foreground sm:text-2xl">{category}</h2>
+              </div>
+              <ul className="mt-6 divide-y divide-line border-t border-line">
+                {categoryItems.map((item) => (
+                  <li
+                    key={item.name}
+                    className="flex flex-col gap-1 py-3 sm:flex-row sm:items-baseline sm:justify-between sm:gap-4"
+                  >
+                    <span className="text-base text-foreground">{item.name}</span>
+                    {item.spec && (
+                      <span className="font-mono text-[11px] uppercase tracking-[0.1em] text-muted sm:text-right">
+                        {item.spec}
+                      </span>
+                    )}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
