@@ -83,12 +83,20 @@ export const projects: Project[] = [
   {
     slug: "two-shell",
     client: "TWO SHELL",
-    title: "Two Shell",
+    title: "LED Blinder / Strobe Rig",
     type: "Concert",
     location: "—",
-    date: "—",
-    credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
+    date: "2025",
+    credits: [
+      { label: "Design, fabrication and programming", value: "Psion Systems" },
+      { label: "Chassis", value: "Aluminium" },
+      { label: "Control", value: "16-bit DMX" },
+      { label: "Rigging", value: "8-point flexible system" },
+    ],
+    blurb:
+      "Custom LED blinder / strobe for @twoshell's 2025 world tour. Inspired by the oppressive clinicality of cold white office lighting.",
     images: ["/projects/two-shell/1.jpeg", "/projects/two-shell/2.jpeg", "/projects/two-shell/3.jpeg", "/projects/two-shell/4.jpeg"],
+    videos: [{ provider: "youtube", id: "aKirHi-mLvM" }],
   },
   {
     slug: "fka-twigs",

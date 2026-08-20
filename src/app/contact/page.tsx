@@ -8,18 +8,26 @@ export default function ContactPage() {
         <h1 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Contact</h1>
         <div className="mt-6 space-y-4">
           <a
-            href="mailto:info@psion.systems"
+            href="mailto:tekh@psion.systems"
             className="block font-serif text-2xl italic text-foreground transition-colors hover:text-accent"
           >
-            info@psion.systems
+            tekh@psion.systems
           </a>
           <a
-            href="https://instagram.com"
+            href="https://www.instagram.com/psion.systems"
             target="_blank"
             rel="noopener noreferrer"
             className="block font-mono text-sm uppercase tracking-[0.1em] text-muted transition-colors hover:text-accent"
           >
-            @psionsystems on Instagram
+            @psion.systems on Instagram
+          </a>
+          <a
+            href="https://www.linkedin.com/in/tekh-balance-98526a251/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block font-mono text-sm uppercase tracking-[0.1em] text-muted transition-colors hover:text-accent"
+          >
+            LinkedIn
           </a>
         </div>
       </main>
