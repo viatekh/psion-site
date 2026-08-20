@@ -126,7 +126,13 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                 {p.type}
               </span>
             </div>
-            <Carousel images={p.images} slug={p.slug} alt={p.client} placeholder={p.placeholder} />
+            <Carousel
+              images={p.images}
+              localClips={p.localClips}
+              slug={p.slug}
+              alt={p.client}
+              placeholder={p.placeholder}
+            />
           </section>
         ))}
       </main>
