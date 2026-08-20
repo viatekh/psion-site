@@ -20,7 +20,6 @@
   --color-line: var(--line);
   --font-sans: var(--font-body);
   --font-mono: var(--font-label);
-  --font-serif: var(--font-editorial);
 }
 
 * {

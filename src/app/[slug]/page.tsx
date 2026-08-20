@@ -49,7 +49,7 @@ export default async function ProjectPage({
                     <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
                       {label}
                     </dt>
-                    <dd className="mt-1 font-serif text-lg italic text-foreground">
+                    <dd className="mt-1 text-lg text-foreground">
                       {label === "Link" ? (
                         <a
                           href={value}
@@ -69,7 +69,7 @@ export default async function ProjectPage({
           </dl>
 
           {project.blurb && (
-            <p className="mt-10 font-serif text-base italic leading-relaxed text-muted">
+            <p className="mt-10 text-base leading-relaxed text-muted">
               {project.blurb}
             </p>
           )}

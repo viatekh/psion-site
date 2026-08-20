@@ -19,10 +19,10 @@ export default function OtherPage() {
 
           <div className="border-l-2 border-line pl-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Project</p>
-            <p className="mt-1 font-serif text-lg italic text-foreground">Other / Misc</p>
+            <p className="mt-1 text-lg text-foreground">Other / Misc</p>
           </div>
 
-          <p className="mt-6 font-serif text-base italic leading-relaxed text-muted">
+          <p className="mt-6 text-base leading-relaxed text-muted">
             Smaller jobs, one-off installs and subcontracted work that don&apos;t warrant a full
             page of their own — still real, still ours.
           </p>
@@ -33,7 +33,7 @@ export default function OtherPage() {
                 <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
                   {c.label}
                 </dt>
-                <dd className="mt-1 font-serif text-lg italic text-foreground">{c.value}</dd>
+                <dd className="mt-1 text-lg text-foreground">{c.value}</dd>
               </div>
             ))}
           </dl>

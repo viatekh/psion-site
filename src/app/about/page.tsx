@@ -34,7 +34,7 @@ export default function AboutPage() {
       <main className="mx-auto max-w-3xl px-6 py-16 lg:px-0">
         <h1 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">About</h1>
 
-        <p className="mt-6 font-serif text-3xl italic leading-snug text-foreground">
+        <p className="mt-6 text-3xl leading-snug text-foreground">
           Sound, light, and everything in between.
         </p>
 
@@ -42,7 +42,7 @@ export default function AboutPage() {
           <p>
             Psion Systems is a sound, light and experience design studio founded in 2015 by{" "}
             <strong className="font-medium text-foreground">Tekh Balance</strong> — engineer,
-            producer and DJ (as <span className="italic">Auratekh</span>) — out of a simple idea:
+            producer and DJ (as Auratekh) — out of a simple idea:
             the best shows treat sound, light and space as one instrument, not three separate
             departments.
           </p>
@@ -63,19 +63,19 @@ export default function AboutPage() {
         <dl className="mt-12 grid grid-cols-2 gap-6 border-l-2 border-line pl-4 sm:grid-cols-4">
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Founded</dt>
-            <dd className="mt-1 font-serif italic text-foreground">2015</dd>
+            <dd className="mt-1 text-foreground">2015</dd>
           </div>
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Director</dt>
-            <dd className="mt-1 font-serif italic text-foreground">Tekh Balance</dd>
+            <dd className="mt-1 text-foreground">Tekh Balance</dd>
           </div>
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Based</dt>
-            <dd className="mt-1 font-serif italic text-foreground">London, UK</dd>
+            <dd className="mt-1 text-foreground">London, UK</dd>
           </div>
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Also known as</dt>
-            <dd className="mt-1 font-serif italic text-foreground">Auratekh (DJ)</dd>
+            <dd className="mt-1 text-foreground">Auratekh (DJ)</dd>
           </div>
         </dl>
 
@@ -83,7 +83,7 @@ export default function AboutPage() {
           <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
             Selected clients
           </p>
-          <p className="mt-3 font-serif text-lg italic leading-relaxed text-muted">
+          <p className="mt-3 text-lg leading-relaxed text-muted">
             {clients.join(" · ")}
           </p>
         </div>

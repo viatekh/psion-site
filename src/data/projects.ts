@@ -111,11 +111,12 @@ export const projects: Project[] = [
   {
     slug: "freerotation",
     client: "Freerotation",
-    title: "Lighting Design and Operation",
+    title: "Technical Production Manager",
     type: "Festival",
     location: "Wales, UK",
     date: "—",
-    credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
+    credits: [{ label: "Technical production management", value: "Psion Systems" }],
+    blurb: "Supply of all DJ and backline. Design and control of all lighting and projection systems.",
     images: [],
     placeholder: true,
   },
@@ -184,7 +185,7 @@ export const projects: Project[] = [
   {
     slug: "neurosphere",
     client: "Neurosphere",
-    title: "Lighting Design and Operation",
+    title: "Art Installation — 8m Geodesic Dome",
     type: "Festival",
     location: "—",
     date: "—",
@@ -194,11 +195,16 @@ export const projects: Project[] = [
   {
     slug: "sonic-rites",
     client: "Sonic Rites",
-    title: "Lighting Design and Operation",
+    title: "\"HexEye\" — Custom Lighting Piece",
     type: "Club",
     location: "—",
     date: "2024",
-    credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
+    credits: [
+      { label: "Design and fabrication", value: "Psion Systems" },
+      { label: "Fabrication method", value: "3D printed" },
+      { label: "Light source", value: "LED" },
+      { label: "Medium", value: "Visuals" },
+    ],
     images: [
       "/projects/sonic-rites/sonicrites1.jpg",
       "/projects/sonic-rites/sonicrites2.jpg",
@@ -251,7 +257,13 @@ export const otherWork: Credit[] = [
   { label: "Colour Factory", value: "Lighting design and operation — Psion Systems" },
   { label: "Twisted Festival", value: "Lighting design and operation — Psion Systems" },
   { label: "Infinity Rug", value: "LED installation — Psion Systems (photos © Ali Bay / @lickmyglitch)" },
-  { label: "Max Cooper", value: "Lighting design and operation — Psion Systems" },
+  {
+    label: "Max Cooper — Royal Albert Hall",
+    value:
+      "Video technical services, projection specification and installation including redundancy systems — Psion Systems",
+  },
+  { label: "Radar Radio", value: "Broadcast studio design and install — Psion Systems" },
+  { label: "Foundation FM", value: "Broadcast studio design and install — Psion Systems" },
 ];
 
 export const otherImages: string[] = [

@@ -9,7 +9,7 @@ export default function ContactPage() {
         <div className="mt-6 space-y-4">
           <a
             href="mailto:tekh@psion.systems"
-            className="block font-serif text-2xl italic text-foreground transition-colors hover:text-accent"
+            className="block text-2xl text-foreground transition-colors hover:text-accent"
           >
             tekh@psion.systems
           </a>
