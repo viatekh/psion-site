@@ -3,30 +3,47 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { ImageFrame } from "./ImageFrame";
 
 export function Carousel({
   images,
   slug,
   alt,
+  placeholder,
 }: {
   images: string[];
   slug: string;
   alt: string;
+  placeholder?: boolean;
 }) {
   const [index, setIndex] = useState(0);
   const hasMultiple = images.length > 1;
 
+  if (placeholder || images.length === 0) {
+    return (
+      <Link href={`/${slug}`} className="block">
+        <ImageFrame className="flex aspect-[16/10] w-full items-center justify-center">
+          <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+            Photos coming soon
+          </span>
+        </ImageFrame>
+      </Link>
+    );
+  }
+
   return (
-    <div className="group relative aspect-[16/10] w-full overflow-hidden bg-surface">
-      <Link href={`/${slug}`} className="block h-full w-full">
-        <Image
-          src={images[index]}
-          alt={alt}
-          fill
-          sizes="(min-width: 1024px) 60vw, 100vw"
-          className="object-cover transition-opacity duration-300"
-          priority={index === 0}
-        />
+    <div className="group relative">
+      <Link href={`/${slug}`} className="block">
+        <ImageFrame className="aspect-[16/10] w-full">
+          <Image
+            src={images[index]}
+            alt={alt}
+            fill
+            sizes="(min-width: 1024px) 60vw, 100vw"
+            className="object-cover transition-opacity duration-300"
+            priority={index === 0}
+          />
+        </ImageFrame>
       </Link>
       {hasMultiple && (
         <>

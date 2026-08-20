@@ -2,6 +2,8 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { TopNav } from "@/components/TopNav";
+import { ImageFrame } from "@/components/ImageFrame";
+import { VideoEmbed } from "@/components/VideoEmbed";
 import { projects } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -33,7 +35,7 @@ export default async function ProjectPage({
       <div className="flex flex-1 flex-col lg:flex-row">
         <aside className="border-b border-line px-6 py-10 lg:sticky lg:top-0 lg:h-screen lg:w-96 lg:shrink-0 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-10">
           <Link
-            href="/"
+            href="/projects"
             className="mb-10 inline-block font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent"
           >
             ← Back to projects
@@ -73,20 +75,36 @@ export default async function ProjectPage({
           )}
         </aside>
 
-        <main className="flex-1 p-6 lg:p-10">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {project.images.map((src) => (
-              <div key={src} className="relative aspect-[4/3] overflow-hidden bg-surface">
-                <Image
-                  src={src}
-                  alt={project.title}
-                  fill
-                  sizes="(min-width: 640px) 50vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            ))}
-          </div>
+        <main className="flex-1 space-y-4 p-6 lg:p-10">
+          {project.placeholder || project.images.length === 0 ? (
+            <ImageFrame className="flex aspect-[16/9] w-full items-center justify-center">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                Photos coming soon
+              </span>
+            </ImageFrame>
+          ) : (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {project.images.map((src) => (
+                <ImageFrame key={src} className="aspect-[4/3]">
+                  <Image
+                    src={src}
+                    alt={project.title}
+                    fill
+                    sizes="(min-width: 640px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </ImageFrame>
+              ))}
+            </div>
+          )}
+
+          {project.videos && project.videos.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {project.videos.map((v) => (
+                <VideoEmbed key={v.id} video={v} />
+              ))}
+            </div>
+          )}
         </main>
       </div>
     </div>

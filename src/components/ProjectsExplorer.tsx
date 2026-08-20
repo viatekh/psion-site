@@ -90,6 +90,16 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             </button>
           ))}
         </nav>
+
+        <div className="mt-auto border-t border-line p-2">
+          <Link
+            href="/other"
+            className="flex items-center gap-3 border-l-2 border-transparent px-3 py-2.5 font-mono text-[11px] uppercase tracking-[0.1em] text-muted transition-colors hover:text-accent"
+          >
+            <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-line" />
+            Other / Misc
+          </Link>
+        </div>
       </aside>
 
       <main className="flex-1">
@@ -116,7 +126,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                 {p.type}
               </span>
             </div>
-            <Carousel images={p.images} slug={p.slug} alt={p.title} />
+            <Carousel images={p.images} slug={p.slug} alt={p.title} placeholder={p.placeholder} />
           </section>
         ))}
       </main>
