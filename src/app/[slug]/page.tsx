@@ -22,6 +22,7 @@ export default async function ProjectPage({
   const project = projects[index];
   const prev = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
+  const hasMultipleSections = project.sections.length > 1;
 
   const fields: [string, string | undefined][] = [
     ["Location", project.location],
@@ -52,12 +53,18 @@ export default async function ProjectPage({
 
           <div className="mt-4 border-l-2 border-line pl-4">
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-              Project{project.sections.length > 1 ? "s" : ""}
+              Project{hasMultipleSections ? "s" : ""}
             </dt>
             <div className="mt-2 space-y-3">
               {project.sections.map((s) => (
                 <div key={s.name}>
-                  <p className="text-lg text-foreground">{s.name}</p>
+                  {hasMultipleSections ? (
+                    <a href={`#${slugify(s.name)}`} className="text-lg text-foreground hover:text-accent">
+                      {s.name}
+                    </a>
+                  ) : (
+                    <p className="text-lg text-foreground">{s.name}</p>
+                  )}
                   {s.description && <p className="text-sm text-muted">{s.description}</p>}
                 </div>
               ))}
@@ -133,25 +140,6 @@ export default async function ProjectPage({
         </aside>
 
         <main className="flex-1 space-y-4 p-6 lg:p-10">
-          {project.placeholder || project.images.length === 0 ? (
-            <ImageFrame className="flex aspect-[16/9] w-full items-center justify-center">
-              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                Photos coming soon
-              </span>
-            </ImageFrame>
-          ) : (
-            <>
-              <Lightbox images={project.images} alt={project.client} />
-              {project.localClips && project.localClips.length > 0 && (
-                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                  {project.localClips.map((src) => (
-                    <LocalClip key={src} src={src} />
-                  ))}
-                </div>
-              )}
-            </>
-          )}
-
           {project.videos && project.videos.length > 0 && (
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {project.videos.map((v) => (
@@ -160,26 +148,54 @@ export default async function ProjectPage({
             </div>
           )}
 
-          {project.sections.map(
-            (s) =>
-              (s.blurb || (s.videos && s.videos.length > 0)) && (
-                <div key={s.name} className="border-t border-line pt-6">
-                  <h3 className="font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
-                    {s.name}
-                  </h3>
-                  {s.blurb && <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{s.blurb}</p>}
-                  {s.videos && s.videos.length > 0 && (
-                    <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                      {s.videos.map((v) => (
-                        <VideoEmbed key={v.url} video={v} />
-                      ))}
-                    </div>
-                  )}
-                </div>
-              )
+          {project.localClips && project.localClips.length > 0 && (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {project.localClips.map((src) => (
+                <LocalClip key={src} src={src} />
+              ))}
+            </div>
           )}
+
+          {project.placeholder || project.images.length === 0 ? (
+            <ImageFrame className="flex aspect-[16/9] w-full items-center justify-center">
+              <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
+                Photos coming soon
+              </span>
+            </ImageFrame>
+          ) : (
+            <Lightbox images={project.images} alt={project.client} />
+          )}
+
+          {hasMultipleSections &&
+            project.sections.map((s) => (
+              <div key={s.name} id={slugify(s.name)} className="scroll-mt-6 border-t border-line pt-8">
+                <h3 className="text-xl text-foreground">{s.name}</h3>
+                {s.description && (
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+                    {s.description}
+                  </p>
+                )}
+                {s.blurb && <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{s.blurb}</p>}
+                {s.videos && s.videos.length > 0 && (
+                  <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
+                    {s.videos.map((v) => (
+                      <VideoEmbed key={v.url} video={v} />
+                    ))}
+                  </div>
+                )}
+                {s.images && s.images.length > 0 && (
+                  <div className="mt-4">
+                    <Lightbox images={s.images} alt={`${project.client} — ${s.name}`} />
+                  </div>
+                )}
+              </div>
+            ))}
         </main>
       </div>
     </div>
   );
+}
+
+function slugify(name: string) {
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 }

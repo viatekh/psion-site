@@ -17,6 +17,7 @@ export type ProjectSection = {
   description?: string;
   blurb?: string;
   videos?: VideoEmbed[];
+  images?: string[];
 };
 
 export type Project = {

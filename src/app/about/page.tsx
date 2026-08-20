@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
+import { projects } from "@/data/projects";
 
 const clients = [
   "Glastonbury Festival",
@@ -84,7 +85,21 @@ export default function AboutPage() {
             Selected clients
           </p>
           <p className="mt-3 text-lg leading-relaxed text-muted">
-            {clients.join(" · ")}
+            {clients.map((name, i) => {
+              const project = projects.find((p) => p.client === name);
+              return (
+                <span key={name}>
+                  {i > 0 && " · "}
+                  {project ? (
+                    <Link href={`/${project.slug}`} className="text-foreground hover:text-accent hover:underline">
+                      {name}
+                    </Link>
+                  ) : (
+                    name
+                  )}
+                </span>
+              );
+            })}
           </p>
         </div>
 
