@@ -40,11 +40,16 @@ export const projects: Project[] = [
   {
     slug: "glastonbury",
     client: "Glastonbury Festival",
-    sections: [{ name: "Levels Stage", description: "LED Manager" }],
+    sections: [{ name: "Levels Stage", description: "MADRIX programming, LED install and config" }],
     type: "Festival",
-    location: "Somerset, UK",
+    location: "Silver Hayes, Glastonbury Festival, UK",
     date: "—",
-    credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
+    credits: [
+      { label: "Lighting design", value: "Refrakt Labs (James Newmarch)" },
+      { label: "MADRIX programming", value: "Psion Systems" },
+      { label: "LED install and config", value: "Psion Systems" },
+      { label: "LED operation", value: "Celestial Artillery & Ronan Somerville" },
+    ],
     blurb: "Featured on MADRIX's official YouTube channel for the Levels stage build and show.",
     images: [
       "/projects/glastonbury/glastonbury1.jpg",
@@ -376,6 +381,25 @@ export const projects: Project[] = [
     localClips: ["/projects/infinity-rug/infinity-rug-clip.mp4"],
     videos: [{ url: "https://www.youtube.com/watch?v=WBXgk5-1yxM" }],
   },
+
+  // ─── Twisted Festival ──────────────────────────────────────────────────
+  {
+    slug: "twisted-festival",
+    client: "Twisted Festival",
+    sections: [{ name: "Immersive Lighting", description: "Woodland stage rigged off the trees" }],
+    type: "Festival",
+    location: "UK",
+    date: "—",
+    credits: [
+      { label: "Design and deployment", value: "Psion Systems" },
+      { label: "Operator", value: "Auratekh & ___ordep" },
+      { label: "Control", value: "MADRIX & Avolites" },
+      { label: "Fixtures", value: "GLX Productions, JEM Professional, Chauvet Pro, Prolight Group, Look Solutions" },
+    ],
+    blurb:
+      "Immersive lighting working with the beautiful woodland setting, with different levels of height only possible by rigging off the trees.",
+    images: ["/projects/twisted-festival/twisted-festival1.jpg", "/projects/twisted-festival/twisted-festival2.jpg"],
+  },
 ];
 
 // ============================================================================
@@ -385,7 +409,6 @@ export const projects: Project[] = [
 
 export const otherWork: Credit[] = [
   { label: "Colour Factory", value: "Lighting design and operation — Psion Systems" },
-  { label: "Twisted Festival", value: "Lighting design and operation — Psion Systems" },
   {
     label: "Max Cooper — Royal Albert Hall",
     value:
@@ -397,7 +420,6 @@ export const otherWork: Credit[] = [
 
 export const otherImages: string[] = [
   "/projects/other/colour-factory1.jpg",
-  "/projects/other/twisted-festival1.jpg",
   "/projects/other/max-cooper1.jpg",
 ];
 
