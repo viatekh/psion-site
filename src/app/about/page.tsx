@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { projects } from "@/data/projects";
+import { CornerBrackets, Crosshair } from "@/components/Decoration";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Sound, light and experience design studio founded in 2015 by Tekh Balance.",
+  description: "Sound, light and experience design studio founded in 2023 by Tekh Balance.",
 };
 
 const clients = [
@@ -26,12 +27,14 @@ const clients = [
 ];
 
 const services = [
-  "Lighting design & programming",
+  "Stage design",
+  "Lighting design & show control installation",
   "Production management",
   "Sound system design & installation",
   "Custom LED design & fabrication",
   "Projection mapping",
   "Rigging & structural install",
+  "Power distribution & electrical install",
   "Broadcast & studio installation",
   "DJ & audio equipment hire",
 ];
@@ -41,7 +44,9 @@ const creating = [
   "Custom LED artworks",
   "Immersive & ceremonial events",
   "Touring visual residencies",
+  "Heritage & sacred venue installs",
   "Broadcast & recording studios",
+  "Private events",
 ];
 
 const badges = [
@@ -57,8 +62,13 @@ export default function AboutPage() {
   return (
     <div className="flex min-h-screen flex-col">
       <TopNav />
-      <main className="mx-auto max-w-3xl px-6 py-16 lg:px-0">
-        <h1 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">About</h1>
+      <main className="relative mx-auto max-w-3xl px-6 py-16 lg:px-0">
+        <CornerBrackets />
+
+        <div className="flex items-center gap-3">
+          <Crosshair className="h-5 w-5 text-accent" />
+          <h1 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">About</h1>
+        </div>
 
         <p className="mt-6 text-3xl leading-snug text-foreground">
           Sound, light, and everything in between.
@@ -66,29 +76,29 @@ export default function AboutPage() {
 
         <div className="mt-10 space-y-6 text-base leading-relaxed text-foreground/90">
           <p>
-            Psion Systems is a sound, light and experience design studio founded in 2015 by{" "}
-            <strong className="font-medium text-foreground">Tekh Balance</strong> — engineer,
-            producer and DJ (as Auratekh) — out of a simple idea:
-            the best shows treat sound, light and space as one instrument, not three separate
-            departments.
+            Psion Systems is a sound, light and experience design studio founded in 2023 by{" "}
+            <strong className="font-medium text-foreground">Tekh Balance</strong> out of a simple
+            idea: the best shows treat sound, light and space as one instrument, not three
+            separate departments.
           </p>
           <p>
             Since then the studio has built LED installations, lighting rigs and full show
-            systems for festivals, clubs and artists worldwide, alongside broadcast studios,
-            gallery installs and private events — with a track record most people only find out
-            about once they start asking around.
+            systems for festivals, clubs and artists worldwide — a reputation built more on word
+            of mouth than marketing.
           </p>
           <p>
             Come to us for the ambitious stuff — custom LED builds, full show programming,
             multi-discipline production that needs one team who can actually deliver it. But we
-            also do the simple stuff: a pair of DJ decks, a PA for the weekend, a couple of
-            moving heads for a birthday party. Same team, same standards, no job too small.
+            also do the simple stuff: a pair of DJ decks, a PA for the weekend, a couple of moving
+            heads for a birthday party. It&apos;s all part of the same system.
           </p>
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2">
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Services</p>
+            <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
+              <span aria-hidden>+</span> Services
+            </p>
             <ul className="mt-3 space-y-1.5">
               {services.map((s) => (
                 <li key={s} className="text-base text-foreground/90">
@@ -98,7 +108,9 @@ export default function AboutPage() {
             </ul>
           </div>
           <div>
-            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Creating</p>
+            <p className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
+              <span aria-hidden>+</span> Creating
+            </p>
             <ul className="mt-3 space-y-1.5">
               {creating.map((c) => (
                 <li key={c} className="text-base text-foreground/90">
@@ -109,10 +121,10 @@ export default function AboutPage() {
           </div>
         </div>
 
-        <dl className="mt-12 grid grid-cols-2 gap-6 border-l-2 border-line pl-4 sm:grid-cols-4">
+        <dl className="mt-12 grid grid-cols-2 gap-6 border-l-2 border-line pl-4 sm:grid-cols-3">
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Founded</dt>
-            <dd className="mt-1 text-foreground">2015</dd>
+            <dd className="mt-1 text-foreground">2023</dd>
           </div>
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Director</dt>
@@ -121,10 +133,6 @@ export default function AboutPage() {
           <div>
             <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Based</dt>
             <dd className="mt-1 text-foreground">London, UK</dd>
-          </div>
-          <div>
-            <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Also known as</dt>
-            <dd className="mt-1 text-foreground">Auratekh (DJ)</dd>
           </div>
         </dl>
 
