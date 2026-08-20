@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Project, projectTypes, feedSubtitle } from "@/data/projects";
+import { Project, projectTypes, feedSubtitle } from "@/data/schema";
 import { Carousel } from "./Carousel";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
