@@ -2,8 +2,8 @@ import { VideoEmbed as VideoEmbedType } from "@/data/projects";
 
 const srcFor = (v: VideoEmbedType) =>
   v.provider === "vimeo"
-    ? `https://player.vimeo.com/video/${v.id}?title=0&byline=0&portrait=0`
-    : `https://www.youtube.com/embed/${v.id}`;
+    ? `https://player.vimeo.com/video/${v.id}?title=0&byline=0&portrait=0&autoplay=1&muted=1&loop=1`
+    : `https://www.youtube.com/embed/${v.id}?autoplay=1&mute=1&loop=1&playlist=${v.id}`;
 
 export function VideoEmbed({ video }: { video: VideoEmbedType }) {
   return (

@@ -53,6 +53,7 @@ export const projects: Project[] = [
       { provider: "vimeo", id: "1174835441", label: "The Levels — show reel" },
       { provider: "youtube", id: "H7XCbg58DIc", label: "Featured on MADRIX" },
     ],
+    localClips: ["/projects/glastonbury/glastonbury-clip1.mp4"],
   },
   {
     slug: "modem",
@@ -115,6 +116,7 @@ export const projects: Project[] = [
       "Custom LED blinder / strobe for @twoshell's 2025 world tour. Inspired by the oppressive clinicality of cold white office lighting.",
     images: ["/projects/two-shell/1.jpeg", "/projects/two-shell/2.jpeg", "/projects/two-shell/3.jpeg", "/projects/two-shell/4.jpeg"],
     videos: [{ provider: "youtube", id: "aKirHi-mLvM" }],
+    localClips: ["/projects/two-shell/3shell-ig.mp4"],
   },
   {
     slug: "fka-twigs",
@@ -200,6 +202,7 @@ export const projects: Project[] = [
     credits: [{ label: "VJ residency and visual design", value: "Psion Systems" }],
     images: ["/projects/fieldmaneuvers/fieldmaneuvers1.jpg", "/projects/fieldmaneuvers/fieldmaneuvers2.jpg", "/projects/fieldmaneuvers/fieldmaneuvers3.jpg"],
     videos: [{ provider: "vimeo", id: "1174865437" }],
+    localClips: ["/projects/fieldmaneuvers/fieldmaneuvers-clip1.mp4", "/projects/fieldmaneuvers/fieldmaneuvers-clip2.mp4"],
   },
   {
     slug: "neurosphere",
@@ -209,7 +212,12 @@ export const projects: Project[] = [
     location: "—",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
-    images: ["/projects/neurosphere/neurosphere1.jpg"],
+    images: [
+      "/projects/neurosphere/neurosphere1.jpg",
+      "/projects/neurosphere/neurosphere2.jpg",
+      "/projects/neurosphere/neurosphere3.jpg",
+    ],
+    localClips: ["/projects/neurosphere/neurosphere-clip1.mp4", "/projects/neurosphere/neurosphere-clip2.mp4"],
   },
   {
     slug: "sonic-rites",
@@ -289,5 +297,8 @@ export const otherImages: string[] = [
   "/projects/other/colour-factory1.jpg",
   "/projects/other/twisted-festival1.jpg",
   "/projects/other/infinity-rug1.jpg",
+  "/projects/other/infinity-rug2.jpg",
   "/projects/other/max-cooper1.jpg",
 ];
+
+export const otherClips: string[] = ["/projects/other/infinity-rug-clip.mp4"];

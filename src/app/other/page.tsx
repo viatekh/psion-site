@@ -2,7 +2,8 @@ import Link from "next/link";
 import Image from "next/image";
 import { TopNav } from "@/components/TopNav";
 import { ImageFrame } from "@/components/ImageFrame";
-import { otherWork, otherImages } from "@/data/projects";
+import { LocalClip } from "@/components/LocalClip";
+import { otherWork, otherImages, otherClips } from "@/data/projects";
 
 export default function OtherPage() {
   return (
@@ -45,6 +46,9 @@ export default function OtherPage() {
               <ImageFrame key={src} className="aspect-[4/3]">
                 <Image src={src} alt="Other work" fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
               </ImageFrame>
+            ))}
+            {otherClips.map((src) => (
+              <LocalClip key={src} src={src} />
             ))}
           </div>
         </main>
