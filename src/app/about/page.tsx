@@ -25,6 +25,25 @@ const clients = [
   "Warehouse Project",
 ];
 
+const services = [
+  "Lighting design & programming",
+  "Production management",
+  "Sound system design & installation",
+  "Custom LED design & fabrication",
+  "Projection mapping",
+  "Rigging & structural install",
+  "Broadcast & studio installation",
+  "DJ & audio equipment hire",
+];
+
+const creating = [
+  "Festival stages & installations",
+  "Custom LED artworks",
+  "Immersive & ceremonial events",
+  "Touring visual residencies",
+  "Broadcast & recording studios",
+];
+
 const badges = [
   "City & Guilds Electrical Installation (18th Edition)",
   "PASMA",
@@ -65,6 +84,29 @@ export default function AboutPage() {
             also do the simple stuff: a pair of DJ decks, a PA for the weekend, a couple of
             moving heads for a birthday party. Same team, same standards, no job too small.
           </p>
+        </div>
+
+        <div className="mt-14 grid grid-cols-1 gap-10 sm:grid-cols-2">
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Services</p>
+            <ul className="mt-3 space-y-1.5">
+              {services.map((s) => (
+                <li key={s} className="text-base text-foreground/90">
+                  {s}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Creating</p>
+            <ul className="mt-3 space-y-1.5">
+              {creating.map((c) => (
+                <li key={c} className="text-base text-foreground/90">
+                  {c}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
         <dl className="mt-12 grid grid-cols-2 gap-6 border-l-2 border-line pl-4 sm:grid-cols-4">
