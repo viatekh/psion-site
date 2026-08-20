@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
-import { Project, projectTypes } from "@/data/projects";
+import { Project, projectTypes, feedSubtitle } from "@/data/projects";
 import { Carousel } from "./Carousel";
 
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
@@ -119,14 +119,14 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
                   {p.client}
                 </h2>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                  {p.title}
+                  {feedSubtitle(p)}
                 </p>
               </Link>
               <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
                 {p.type}
               </span>
             </div>
-            <Carousel images={p.images} slug={p.slug} alt={p.title} placeholder={p.placeholder} />
+            <Carousel images={p.images} slug={p.slug} alt={p.client} placeholder={p.placeholder} />
           </section>
         ))}
       </main>

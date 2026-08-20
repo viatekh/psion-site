@@ -20,8 +20,6 @@ export default async function ProjectPage({
   if (!project) notFound();
 
   const fields: [string, string | undefined][] = [
-    ["Client", project.client],
-    ["Project", project.title],
     ["Location", project.location],
     ["Date", project.date],
     ["Link", project.link],
@@ -41,7 +39,28 @@ export default async function ProjectPage({
             ← Back to projects
           </Link>
 
-          <dl className="space-y-4">
+          <div className="border-l-2 border-line pl-4">
+            <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
+              Client
+            </dt>
+            <dd className="mt-1 text-lg text-foreground">{project.client}</dd>
+          </div>
+
+          <div className="mt-4 border-l-2 border-line pl-4">
+            <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
+              Project{project.sections.length > 1 ? "s" : ""}
+            </dt>
+            <div className="mt-2 space-y-3">
+              {project.sections.map((s) => (
+                <div key={s.name}>
+                  <p className="text-lg text-foreground">{s.name}</p>
+                  {s.description && <p className="text-sm text-muted">{s.description}</p>}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <dl className="mt-4 space-y-4">
             {fields.map(
               ([label, value]) =>
                 value && (
@@ -55,7 +74,7 @@ export default async function ProjectPage({
                           href={value}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="not-italic font-mono text-sm text-foreground underline decoration-line hover:text-accent hover:decoration-accent"
+                          className="font-mono text-sm text-foreground underline decoration-line hover:text-accent hover:decoration-accent"
                         >
                           {value}
                         </a>
@@ -88,7 +107,7 @@ export default async function ProjectPage({
                 <ImageFrame key={src} className="aspect-[4/3]">
                   <Image
                     src={src}
-                    alt={project.title}
+                    alt={project.client}
                     fill
                     sizes="(min-width: 640px) 50vw, 100vw"
                     className="object-cover"

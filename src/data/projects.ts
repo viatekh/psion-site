@@ -1,5 +1,7 @@
 export type Credit = { label: string; value: string };
 
+export type ProjectSection = { name: string; description?: string };
+
 export type VideoEmbed = {
   provider: "vimeo" | "youtube";
   id: string;
@@ -9,7 +11,7 @@ export type VideoEmbed = {
 export type Project = {
   slug: string;
   client: string;
-  title: string;
+  sections: ProjectSection[];
   type: "Festival" | "Club" | "Concert" | "Private Client";
   location: string;
   date: string;
@@ -22,11 +24,18 @@ export type Project = {
   placeholder?: boolean;
 };
 
+export const feedSubtitle = (p: Project) =>
+  p.sections.length === 1
+    ? p.sections[0].description
+      ? `${p.sections[0].name} — ${p.sections[0].description}`
+      : p.sections[0].name
+    : p.sections.map((s) => s.name).join(" · ");
+
 export const projects: Project[] = [
   {
     slug: "glastonbury",
     client: "Glastonbury Festival",
-    title: "Levels Stage — LED Manager",
+    sections: [{ name: "Levels Stage", description: "LED Manager" }],
     type: "Festival",
     location: "Somerset, UK",
     date: "—",
@@ -47,10 +56,15 @@ export const projects: Project[] = [
   {
     slug: "modem",
     client: "MO:DEM Festival",
-    title: "The Seed Stage — LED Design, Installation & Operation",
+    sections: [
+      { name: "The Hive", description: "LED configuration and operation" },
+      { name: "The Seed", description: "LED configuration and operation" },
+      { name: "The Seed (2026)", description: "Complete redesign, LED install, stage fabrication, operation and control" },
+      { name: "The Hive (2027)", description: "Coming soon..." },
+    ],
     type: "Festival",
     location: "Croatia",
-    date: "2024 — 2025",
+    date: "2024 — 2027",
     link: "https://www.instagram.com/modemfestival/",
     designer: "David Haasnoot",
     credits: [
@@ -62,17 +76,20 @@ export const projects: Project[] = [
   {
     slug: "above-below",
     client: "Above Below",
-    title: "Lighting Design",
+    sections: [
+      { name: "The Beacon", description: "Lighting design and operation" },
+      { name: "The Coombe", description: "4-point Funktion-One sound system" },
+    ],
     type: "Club",
     location: "—",
     date: "—",
-    credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
+    credits: [],
     images: ["/projects/abovebelow/abovebelow1.jpg"],
   },
   {
     slug: "fold",
     client: "FOLD",
-    title: "Steam Room LED Installation",
+    sections: [{ name: "Steam Room", description: "LED installation" }],
     type: "Club",
     location: "London, UK",
     date: "—",
@@ -83,7 +100,7 @@ export const projects: Project[] = [
   {
     slug: "two-shell",
     client: "Two Shell",
-    title: "LED Blinder / Strobe Rig",
+    sections: [{ name: "LED Blinder / Strobe Rig" }],
     type: "Concert",
     location: "—",
     date: "2025",
@@ -101,7 +118,7 @@ export const projects: Project[] = [
   {
     slug: "fka-twigs",
     client: "FKA Twigs",
-    title: "\"The Eleven\" @ Sotheby's — Funktion-One Sound System",
+    sections: [{ name: "\"The Eleven\" @ Sotheby's", description: "Funktion-One sound system" }],
     type: "Concert",
     location: "—",
     date: "—",
@@ -111,7 +128,7 @@ export const projects: Project[] = [
   {
     slug: "freerotation",
     client: "Freerotation",
-    title: "Technical Production Manager",
+    sections: [{ name: "Technical Production Manager" }],
     type: "Festival",
     location: "Wales, UK",
     date: "—",
@@ -123,7 +140,7 @@ export const projects: Project[] = [
   {
     slug: "boom-festival",
     client: "BOOM Festival",
-    title: "Dance Temple, Alchemy Circle — LED System Install & Operation",
+    sections: [{ name: "Dance Temple, Alchemy Circle", description: "LED system install and operation" }],
     type: "Festival",
     location: "Idanha-a-Nova, Portugal",
     date: "—",
@@ -138,7 +155,7 @@ export const projects: Project[] = [
   {
     slug: "esoteric",
     client: "Esoteric Festival",
-    title: "Lighting Design and Operation",
+    sections: [{ name: "Lighting Design and Operation" }],
     type: "Festival",
     location: "—",
     date: "—",
@@ -148,7 +165,7 @@ export const projects: Project[] = [
   {
     slug: "transmissions-from-hackney",
     client: "Transmissions from Hackney",
-    title: "Lighting Design and Operation",
+    sections: [{ name: "Lighting Design and Operation" }],
     type: "Club",
     location: "Hackney, London",
     date: "2024",
@@ -163,7 +180,7 @@ export const projects: Project[] = [
   {
     slug: "queens-yard-summer-party",
     client: "Queens Yard Summer Party",
-    title: "Lighting Design and Operation",
+    sections: [{ name: "Lighting Design and Operation" }],
     type: "Private Client",
     location: "Hackney Wick, London",
     date: "—",
@@ -174,7 +191,7 @@ export const projects: Project[] = [
   {
     slug: "field-maneuvers",
     client: "Field Maneuvers",
-    title: "VJ Residency",
+    sections: [{ name: "VJ Residency" }],
     type: "Festival",
     location: "UK",
     date: "2024",
@@ -185,7 +202,7 @@ export const projects: Project[] = [
   {
     slug: "neurosphere",
     client: "Neurosphere",
-    title: "Art Installation — 8m Geodesic Dome",
+    sections: [{ name: "Art Installation", description: "8m geodesic dome" }],
     type: "Festival",
     location: "—",
     date: "—",
@@ -195,7 +212,7 @@ export const projects: Project[] = [
   {
     slug: "sonic-rites",
     client: "Sonic Rites",
-    title: "\"HexEye\" — Custom Lighting Piece",
+    sections: [{ name: "\"HexEye\"", description: "Custom lighting piece" }],
     type: "Club",
     location: "—",
     date: "2024",
@@ -215,7 +232,7 @@ export const projects: Project[] = [
   {
     slug: "mary-lattimore",
     client: "Mary Lattimore",
-    title: "Resonance — Lighting Design and Operation",
+    sections: [{ name: "Resonance", description: "Lighting design and operation" }],
     type: "Concert",
     location: "—",
     date: "—",
@@ -232,7 +249,7 @@ export const projects: Project[] = [
   {
     slug: "space-between",
     client: "Space Between",
-    title: "Lighting Design and Operation",
+    sections: [{ name: "Lighting Design and Operation" }],
     type: "Club",
     location: "—",
     date: "—",
@@ -242,7 +259,7 @@ export const projects: Project[] = [
   {
     slug: "persona",
     client: "Persona",
-    title: "Lighting Design and Operation",
+    sections: [{ name: "Lighting Design and Operation" }],
     type: "Club",
     location: "—",
     date: "—",
