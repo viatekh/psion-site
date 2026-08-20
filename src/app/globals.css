@@ -5,8 +5,8 @@
   --surface: #111312;
   --foreground: #e8e8e6;
   --muted: #8a8f8c;
-  --accent: #2be08a;
-  --accent-dim: #12321f;
+  --accent: #d6d6d2;
+  --accent-dim: #232322;
   --line: #262a27;
 }
 
@@ -43,4 +43,25 @@ body {
 
 a {
   text-underline-offset: 3px;
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-page-in {
+  animation: page-in 0.4s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-page-in {
+    animation: none;
+  }
 }

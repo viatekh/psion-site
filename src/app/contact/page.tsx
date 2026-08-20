@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
+
+export const metadata: Metadata = {
+  title: "Contact",
+  description: "Get in touch with Psion Systems.",
+};
 
 export default function ContactPage() {
   return (

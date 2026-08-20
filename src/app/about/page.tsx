@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { projects } from "@/data/projects";
+
+export const metadata: Metadata = {
+  title: "About",
+  description: "Sound, light and experience design studio founded in 2015 by Tekh Balance.",
+};
 
 const clients = [
   "Glastonbury Festival",

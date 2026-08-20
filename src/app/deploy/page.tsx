@@ -1,6 +1,12 @@
+import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
 import { EquipmentGrid } from "@/components/EquipmentGrid";
 import { equipment } from "@/data/equipment";
+
+export const metadata: Metadata = {
+  title: "Deploy",
+  description: "DJ and audio equipment hire from Psion Systems.",
+};
 
 export default function DeployPage() {
   return (

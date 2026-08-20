@@ -1,9 +1,15 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { TopNav } from "@/components/TopNav";
 import { ImageFrame } from "@/components/ImageFrame";
 import { LocalClip } from "@/components/LocalClip";
 import { otherWork, otherImages, otherClips } from "@/data/projects";
+
+export const metadata: Metadata = {
+  title: "Other / Misc",
+  description: "Smaller jobs and subcontracted work from Psion Systems.",
+};
 
 export default function OtherPage() {
   return (

@@ -3,6 +3,7 @@ import Link from "next/link";
 const links = [
   { href: "/projects", label: "Projects" },
   // "/deploy" is intentionally hidden from nav for now — page stays live, just unlinked.
+  { href: "/process", label: "Process" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

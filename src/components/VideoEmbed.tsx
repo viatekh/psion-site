@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef, useState } from "react";
 import { VideoEmbed as VideoEmbedType, parseVideoUrl } from "@/data/schema";
 
 const srcFor = (v: VideoEmbedType) => {
@@ -15,18 +18,34 @@ const srcFor = (v: VideoEmbedType) => {
 
 export function VideoEmbed({ video }: { video: VideoEmbedType }) {
   const src = srcFor(video);
+  const ref = useRef<HTMLDivElement>(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
+      rootMargin: "200px",
+      threshold: 0.1,
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   if (!src) return null;
 
   return (
-    <div className="border border-line bg-surface">
+    <div ref={ref} className="border border-line bg-surface">
       <div className="relative aspect-video">
-        <iframe
-          src={src}
-          title={video.label ?? "Project video"}
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowFullScreen
-          className="absolute inset-0 h-full w-full"
-        />
+        {inView && (
+          <iframe
+            src={src}
+            title={video.label ?? "Project video"}
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+            className="absolute inset-0 h-full w-full"
+          />
+        )}
       </div>
       {video.label && (
         <p className="border-t border-line px-4 py-2 font-mono text-[10px] uppercase tracking-[0.15em] text-muted">
