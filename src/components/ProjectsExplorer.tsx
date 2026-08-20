@@ -116,10 +116,10 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             <div className="mb-5 flex items-baseline justify-between gap-4">
               <Link href={`/${p.slug}`} className="group">
                 <h2 className="text-2xl font-normal text-foreground transition-colors group-hover:text-accent lg:text-3xl">
-                  {p.title}
+                  {p.client}
                 </h2>
                 <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
-                  {p.client}
+                  {p.title}
                 </p>
               </Link>
               <span className="shrink-0 font-mono text-[10px] uppercase tracking-[0.15em] text-accent">

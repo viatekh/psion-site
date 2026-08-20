@@ -6,7 +6,7 @@ import { projects, projectTypes } from "@/data/projects";
 
 const groups = projectTypes.map((type) => ({
   type,
-  names: projects.filter((p) => p.type === type).map((p) => p.title),
+  names: projects.filter((p) => p.type === type).map((p) => p.client),
 }));
 
 export default function Home() {
