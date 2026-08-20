@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 const links = [
   { href: "/projects", label: "Projects" },
@@ -15,7 +16,14 @@ export function TopNav() {
         href="/"
         className="flex items-center gap-3 border-r border-b border-line px-4 py-4 font-mono text-[11px] uppercase tracking-[0.2em] text-accent sm:border-b-0 sm:px-5"
       >
-        <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-accent" aria-hidden />
+        <Image
+          src="/brand/icon-bold-white.png"
+          alt=""
+          width={1872}
+          height={637}
+          className="h-3.5 w-auto shrink-0"
+          priority
+        />
         Psion Systems
       </Link>
       <nav className="flex flex-1">
