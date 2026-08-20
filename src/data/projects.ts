@@ -21,6 +21,7 @@ export type Project = {
   blurb?: string;
   images: string[];
   videos?: VideoEmbed[];
+  localClips?: string[];
   placeholder?: boolean;
 };
 
@@ -160,7 +161,8 @@ export const projects: Project[] = [
     location: "—",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
-    images: ["/projects/esoteric/esoteric3.jpg"],
+    images: ["/projects/esoteric/esoteric3.jpg", "/projects/esoteric/esoteric4.jpg"],
+    localClips: ["/projects/esoteric/esoteric1.mp4", "/projects/esoteric/esoteric2.mp4"],
   },
   {
     slug: "transmissions-from-hackney",

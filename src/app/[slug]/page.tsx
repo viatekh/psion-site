@@ -4,6 +4,7 @@ import Image from "next/image";
 import { TopNav } from "@/components/TopNav";
 import { ImageFrame } from "@/components/ImageFrame";
 import { VideoEmbed } from "@/components/VideoEmbed";
+import { LocalClip } from "@/components/LocalClip";
 import { projects } from "@/data/projects";
 
 export function generateStaticParams() {
@@ -113,6 +114,9 @@ export default async function ProjectPage({
                     className="object-cover"
                   />
                 </ImageFrame>
+              ))}
+              {project.localClips?.map((src) => (
+                <LocalClip key={src} src={src} />
               ))}
             </div>
           )}
