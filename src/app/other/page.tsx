@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function OtherPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <div className="flex flex-1 flex-col lg:flex-row">
         <aside className="border-b border-line px-6 py-10 lg:sticky lg:top-0 lg:h-screen lg:w-96 lg:shrink-0 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-10">
@@ -29,8 +29,7 @@ export default function OtherPage() {
           </div>
 
           <p className="mt-6 text-base leading-relaxed text-muted">
-            Smaller jobs, one-off installs and subcontracted work that don&apos;t warrant a full
-            page of their own — still real, still ours.
+            Smaller jobs, one-offs and subcontracted work. No full page, still ours.
           </p>
 
           <dl className="mt-8 space-y-4">

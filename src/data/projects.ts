@@ -18,6 +18,8 @@ import { Project, Credit } from "./schema";
 //                 blurb       — a longer paragraph about this bit (optional)
 //                 videos      — videos specific to this section (optional)
 //   type      — must be exactly one of: "Festival", "Club", "Concert", "Private Client"
+//   disciplines — what kind of work it was, any of: "Light", "LED", "Sound",
+//               "Video", "Fabrication", "Production" (used by the filter buttons)
 //   location  — city/venue, or "—" if unknown
 //   date      — year(s), or "—" if unknown
 //   link      — the client's website/Instagram (optional, delete the line to omit)
@@ -44,6 +46,7 @@ export const projects: Project[] = [
     client: "Glastonbury Festival",
     sections: [{ name: "Levels Stage", description: "MADRIX programming, LED install and config" }],
     type: "Festival",
+    disciplines: ["LED"],
     location: "Silver Hayes, Glastonbury Festival, UK",
     date: "—",
     credits: [
@@ -94,6 +97,7 @@ export const projects: Project[] = [
       { name: "The Hive (2027)", description: "Coming soon..." },
     ],
     type: "Festival",
+    disciplines: ["LED", "Fabrication"],
     location: "Croatia",
     date: "2024 — 2027",
     link: "https://www.instagram.com/modemfestival/",
@@ -114,6 +118,7 @@ export const projects: Project[] = [
       { name: "The Coombe", description: "4-point Funktion-One sound system" },
     ],
     type: "Club",
+    disciplines: ["Light", "Sound"],
     location: "—",
     date: "—",
     credits: [],
@@ -126,6 +131,7 @@ export const projects: Project[] = [
     client: "FOLD",
     sections: [{ name: "Steam Room", description: "LED installation" }],
     type: "Club",
+    disciplines: ["LED", "Light"],
     location: "London, UK",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
@@ -139,6 +145,7 @@ export const projects: Project[] = [
     client: "Two Shell",
     sections: [{ name: "LED Blinder / Strobe Rig" }],
     type: "Concert",
+    disciplines: ["LED", "Fabrication"],
     location: "—",
     date: "2025",
     credits: [
@@ -160,6 +167,7 @@ export const projects: Project[] = [
     client: "FKA Twigs",
     sections: [{ name: "\"The Eleven\" @ Sotheby's", description: "Funktion-One sound system" }],
     type: "Concert",
+    disciplines: ["Sound"],
     location: "London, UK",
     date: "—",
     credits: [{ label: "Sound system design and operation", value: "Psion Systems" }],
@@ -175,6 +183,7 @@ export const projects: Project[] = [
     client: "Freerotation",
     sections: [{ name: "Technical Production Manager" }],
     type: "Festival",
+    disciplines: ["Production", "Light", "Video"],
     location: "Wales, UK",
     date: "—",
     credits: [{ label: "Technical production management", value: "Psion Systems" }],
@@ -189,6 +198,7 @@ export const projects: Project[] = [
     client: "BOOM Festival",
     sections: [{ name: "Dance Temple, Alchemy Circle", description: "LED system install and operation" }],
     type: "Festival",
+    disciplines: ["LED", "Light"],
     location: "Idanha-a-Nova, Portugal",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
@@ -206,6 +216,7 @@ export const projects: Project[] = [
     client: "Esoteric Festival",
     sections: [{ name: "Lighting Design and Operation" }],
     type: "Festival",
+    disciplines: ["Light"],
     location: "—",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
@@ -219,6 +230,7 @@ export const projects: Project[] = [
     client: "Transmissions from Hackney",
     sections: [{ name: "Lighting Design and Operation" }],
     type: "Club",
+    disciplines: ["Light"],
     location: "Hackney, London",
     date: "2024",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
@@ -236,6 +248,7 @@ export const projects: Project[] = [
     client: "Queens Yard Summer Party",
     sections: [{ name: "Lighting Design and Operation" }],
     type: "Private Client",
+    disciplines: ["Light"],
     location: "Hackney Wick, London",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
@@ -249,11 +262,12 @@ export const projects: Project[] = [
     client: "Field Maneuvers",
     sections: [{ name: "VJ Residency" }],
     type: "Festival",
+    disciplines: ["Video"],
     location: "UK",
     date: "2019 — present",
     credits: [{ label: "VJ residency and visual design", value: "Psion Systems" }],
     blurb:
-      "Psion Systems has a long-standing visuals residency with Field Maneuvers, providing a set of live visuals every year on the main stage since 2019.",
+      "Visuals residency at Field Maneuvers: a live VJ set on the main stage every year since 2019.",
     images: ["/projects/fieldmaneuvers/fieldmaneuvers1.jpg", "/projects/fieldmaneuvers/fieldmaneuvers2.jpg", "/projects/fieldmaneuvers/fieldmaneuvers3.jpg"],
     videos: [{ url: "https://vimeo.com/1174865437" }],
     localClips: ["/projects/fieldmaneuvers/fieldmaneuvers-clip1.mp4", "/projects/fieldmaneuvers/fieldmaneuvers-clip2.mp4"],
@@ -265,6 +279,7 @@ export const projects: Project[] = [
     client: "Neurosphere",
     sections: [{ name: "Art Installation", description: "8m geodesic dome" }],
     type: "Festival",
+    disciplines: ["Light", "Fabrication"],
     location: "—",
     date: "—",
     credits: [{ label: "Design, installation and programming", value: "Psion Systems" }],
@@ -284,6 +299,7 @@ export const projects: Project[] = [
     client: "Sonic Rites",
     sections: [{ name: "\"HexEye\"", description: "Custom lighting piece" }],
     type: "Club",
+    disciplines: ["LED", "Fabrication"],
     location: "—",
     date: "2024",
     credits: [
@@ -306,6 +322,7 @@ export const projects: Project[] = [
     client: "Mary Lattimore",
     sections: [{ name: "Resonance", description: "Multi-projector visual mapping and sound reinforcement" }],
     type: "Concert",
+    disciplines: ["Video", "Sound"],
     location: "Todmorden Unitarian Church, UK",
     date: "—",
     credits: [
@@ -330,6 +347,7 @@ export const projects: Project[] = [
     client: "Space Between",
     sections: [{ name: "Lighting Design" }],
     type: "Club",
+    disciplines: ["Light"],
     location: "—",
     date: "2024",
     credits: [
@@ -362,6 +380,7 @@ export const projects: Project[] = [
     client: "Persona",
     sections: [{ name: "Lighting Design and Operation" }],
     type: "Club",
+    disciplines: ["Light"],
     location: "—",
     date: "—",
     credits: [{ label: "Lighting design and operation", value: "Psion Systems" }],
@@ -374,6 +393,7 @@ export const projects: Project[] = [
     client: "Infinity Rug",
     sections: [{ name: "\"Dendrite\"", description: "Custom LED installation based on root systems" }],
     type: "Concert",
+    disciplines: ["Light", "LED"],
     location: "Berlin, Germany",
     date: "—",
     credits: [{ label: "Lighting design and programming", value: "Psion Systems" }],
@@ -390,6 +410,7 @@ export const projects: Project[] = [
     client: "Twisted Festival",
     sections: [{ name: "Immersive Lighting", description: "Woodland stage rigged off the trees" }],
     type: "Festival",
+    disciplines: ["Light"],
     location: "UK",
     date: "—",
     credits: [

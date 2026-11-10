@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <main className="mx-auto max-w-2xl px-6 py-16 lg:px-0">
         <h1 className="sr-only">Contact Psion Systems</h1>

@@ -25,6 +25,7 @@ export type Project = {
   client: string;
   sections: ProjectSection[];
   type: "Festival" | "Club" | "Concert" | "Private Client";
+  disciplines: Discipline[];
   location: string;
   date: string;
   link?: string;
@@ -42,6 +43,9 @@ export type Project = {
 export const posterFor = (clip: string) => clip.replace(/\.mp4$/, "-poster.jpg");
 
 export const projectTypes = ["Festival", "Club", "Concert", "Private Client"] as const;
+
+export const projectDisciplines = ["Light", "LED", "Sound", "Video", "Fabrication", "Production"] as const;
+export type Discipline = (typeof projectDisciplines)[number];
 
 export const feedSubtitle = (p: Project) =>
   p.sections.length === 1

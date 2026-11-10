@@ -5,13 +5,13 @@ import { projects } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
-  description: "Lighting, LED and show design work for festivals, clubs and live events.",
+  description: "Light, LED, sound and video work for festivals, clubs and artists.",
   alternates: { canonical: "/projects" },
 };
 
 export default function ProjectsPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <ProjectsExplorer projects={projects} />
     </div>

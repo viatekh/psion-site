@@ -40,7 +40,7 @@ export function Carousel({
       <Link href={`/${slug}`} className="block">
         <ImageFrame className="flex aspect-[16/10] w-full items-center justify-center">
           <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-            Photos coming soon
+            No photos yet
           </span>
         </ImageFrame>
       </Link>

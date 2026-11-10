@@ -1,27 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
-import { HeroSlideshow } from "@/components/HeroSlideshow";
+import { HeroReel } from "@/components/HeroReel";
 import { CornerBrackets, Crosshair, RingCircle } from "@/components/Decoration";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-// TODO: placeholder selection — remind Tekh to pick the best hero images later.
-const heroImages = [
-  { src: "/projects/modem/modem1.jpg", slug: "modem" },
-  { src: "/projects/glastonbury/glastonbury1.jpg", slug: "glastonbury" },
-  { src: "/projects/two-shell/3.jpeg", slug: "two-shell" },
-  { src: "/projects/boom-festival/boom6.jpg", slug: "boom-festival" },
-  { src: "/projects/fkatwigs/fkatwigs1.jpg", slug: "fka-twigs" },
-  { src: "/projects/glastonbury/glastonbury2.jpg", slug: "glastonbury" },
-];
-
 export default function Home() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <main className="relative flex flex-1 flex-col justify-center overflow-hidden px-6 py-20 lg:px-16">
-        <HeroSlideshow images={heroImages} />
+        <HeroReel />
         <CornerBrackets className="pointer-events-none" />
         <RingCircle className="pointer-events-none absolute -right-16 top-1/2 h-[420px] w-[420px] -translate-y-1/2 text-line/60 lg:right-8" />
 
@@ -36,8 +26,8 @@ export default function Home() {
           </h1>
 
           <p className="mt-8 max-w-md text-lg leading-relaxed text-foreground/90">
-            Lighting, LED and show systems for festivals, clubs and live events — and the simple
-            stuff too, from a single DJ deck to a full audio rig.
+            Light, LED and sound for festivals, clubs, churches and fields. Big rigs, small rigs,
+            or just a pair of decks.
           </p>
 
           <nav className="mt-10 flex flex-wrap gap-3">

@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter, IBM_Plex_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { CustomCursor } from "@/components/CustomCursor";
+import { Footer } from "@/components/Footer";
 import "./globals.css";
 
 const body = Inter({
@@ -21,7 +23,7 @@ export const metadata: Metadata = {
     default: "Psion Systems",
     template: "%s — Psion Systems",
   },
-  description: "Lighting design, LED installation and show operation — Psion Systems.",
+  description: "Sound, light and experience design studio. London.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
@@ -33,6 +35,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <body className="min-h-full flex flex-col bg-background text-foreground">
         <CustomCursor />
         {children}
+        <Footer />
+        <Analytics />
       </body>
     </html>
   );

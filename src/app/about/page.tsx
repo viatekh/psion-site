@@ -62,7 +62,7 @@ const badges = [
 
 export default function AboutPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <main className="relative mx-auto max-w-3xl px-6 py-16 lg:px-0">
         <CornerBrackets />
@@ -70,26 +70,25 @@ export default function AboutPage() {
         <PageLabel>About</PageLabel>
 
         <h1 className="mt-6 text-3xl leading-snug text-foreground">
-          Sound, light, and everything in between.
+          Sound, light and space. One instrument.
         </h1>
 
         <div className="mt-10 space-y-6 text-base leading-relaxed text-foreground/90">
           <p>
-            Psion Systems is a sound, light and experience design studio founded in 2023 by{" "}
-            <strong className="font-medium text-foreground">Tekh Balance</strong> out of a simple
-            idea: the best shows treat sound, light and space as one instrument, not three
-            separate departments.
+            Psion Systems is a sound, light and experience design studio in London.{" "}
+            <strong className="font-medium text-foreground">Tekh Balance</strong> started it in
+            2023 because the best shows treat sound, light and space as one instrument, and most
+            productions split them into three departments.
           </p>
           <p>
-            Since then the studio has built LED installations, lighting rigs and full show
-            systems for festivals, clubs and artists worldwide — a reputation built more on word
-            of mouth than marketing.
+            Since then we&apos;ve built LED installations, lighting rigs and full show systems for
+            festivals, clubs and artists all over. Nearly all of that work found us by word of
+            mouth.
           </p>
           <p>
-            Come to us for the ambitious stuff — custom LED builds, full show programming,
-            multi-discipline production that needs one team who can actually deliver it. But we
-            also do the simple stuff: a pair of DJ decks, a PA for the weekend, a couple of moving
-            heads for a birthday party. It&apos;s all part of the same system.
+            Bring us the ambitious stuff: custom LED builds, full show programming, jobs that need
+            one crew who can do the lot. Or the easy stuff: a pair of decks, a PA for the weekend,
+            a couple of moving heads for a birthday. It&apos;s all part of the same system.
           </p>
         </div>
 

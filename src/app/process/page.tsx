@@ -5,52 +5,37 @@ import { PageLabel } from "@/components/PageLabel";
 
 export const metadata: Metadata = {
   title: "Process",
-  description: "How a project with Psion Systems actually runs, start to finish.",
+  description: "How a job with Psion Systems runs, start to finish.",
   alternates: { canonical: "/process" },
 };
 
 const steps = [
+  { name: "Hello", body: "Email or Instagram. A rough idea is plenty." },
   {
-    name: "Enquiry",
-    body: "Tell us what you need — even a rough idea. Email or Instagram, either works.",
+    name: "Talk",
+    body: "A call about the brief, the space, the budget and the deadline. We'll tell you what's actually possible.",
   },
+  { name: "Plan", body: "Scope, timeline and price, written down. The price only moves if the job does." },
+  { name: "Book", body: "A deposit holds the date, the kit and the crew." },
   {
-    name: "Consultation",
-    body: "A call to talk through the brief, the space, the budget, and what's actually possible in the time you've got.",
+    name: "Build",
+    body: "Design, fabrication, programming. All of it built and tested in the workshop before it goes near a van.",
   },
-  {
-    name: "Proposal & Quote",
-    body: "We send a written proposal with a clear scope, timeline and price. No surprises later.",
-  },
-  {
-    name: "Booking & Deposit",
-    body: "Confirm the date with a deposit. Your slot, gear and crew are locked in.",
-  },
-  {
-    name: "Production",
-    body: "Design, fabrication, programming — whatever the job needs, built and tested before it ever leaves the workshop.",
-  },
-  {
-    name: "Show Day",
-    body: "Install, operate, strike. We run it live so you don't have to think about it.",
-  },
-  {
-    name: "Wrap-up",
-    body: "Final invoice, and — if you want it — a debrief on what worked and what we'd change next time.",
-  },
+  { name: "Show", body: "We install it, run it and take it down. You watch." },
+  { name: "After", body: "Final invoice. A debrief if you want one: what worked, what we'd change." },
 ];
 
 export default function ProcessPage() {
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <main className="mx-auto max-w-2xl px-6 py-16 lg:px-0">
         <PageLabel>Process</PageLabel>
         <h1 className="mt-6 text-2xl text-foreground sm:text-3xl">
-          How a project with us actually runs.
+          How it goes.
         </h1>
         <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
-          Same steps whether it&apos;s a custom LED build or a pair of decks for the weekend.
+          Same seven steps for a festival stage or a pair of decks.
         </p>
 
         <ol className="mt-14 border-l border-line pl-8">
@@ -71,7 +56,7 @@ export default function ProcessPage() {
 
         <p className="mt-4 font-mono text-[11px] uppercase tracking-[0.15em] text-muted">
           <Link href="/contact" className="text-accent hover:underline">
-            Start an enquiry →
+            Say hello →
           </Link>
         </p>
       </main>

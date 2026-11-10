@@ -55,7 +55,7 @@ export default async function ProjectPage({
   ].filter((f): f is [string, string] => !!f[1] && f[1] !== "—");
 
   return (
-    <div className="flex min-h-screen flex-col">
+    <div className="flex flex-1 flex-col">
       <TopNav />
       <div className="flex flex-1 flex-col lg:flex-row">
         {/* Phones: title, then media, then the datafile. Desktop: one sticky sidebar. */}
@@ -153,7 +153,7 @@ export default async function ProjectPage({
           {project.placeholder || !hasMedia ? (
             <ImageFrame className="flex aspect-[16/9] w-full items-center justify-center">
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
-                Photos coming soon
+                No photos yet
               </span>
             </ImageFrame>
           ) : (
