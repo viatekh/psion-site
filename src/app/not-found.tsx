@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
+import { PageLabel } from "@/components/PageLabel";
 
 export default function NotFound() {
   return (
     <div className="flex min-h-screen flex-col">
       <TopNav />
       <main className="flex flex-1 flex-col items-start justify-center px-6 lg:px-16">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">404</p>
+        <PageLabel>404</PageLabel>
         <h1 className="mt-6 text-2xl text-foreground sm:text-3xl">
           Nothing on file at this address.
         </h1>

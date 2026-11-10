@@ -4,10 +4,13 @@ import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { ImageFrame } from "@/components/ImageFrame";
 import { VideoEmbed } from "@/components/VideoEmbed";
-import { LocalClip } from "@/components/LocalClip";
-import { Lightbox } from "@/components/Lightbox";
+import { MediaGrid } from "@/components/MediaGrid";
 import { projects } from "@/data/projects";
-import { feedSubtitle } from "@/data/schema";
+import { feedSubtitle, VideoEmbed as VideoEmbedType } from "@/data/schema";
+
+const labelClass = "font-mono text-[10px] uppercase tracking-[0.15em] text-accent";
+const linkClass =
+  "font-mono text-sm text-foreground underline decoration-line hover:text-accent hover:decoration-accent";
 
 export function generateStaticParams() {
   return projects.map((p) => ({ slug: p.slug }));
@@ -24,6 +27,7 @@ export async function generateMetadata({
   return {
     title: project.client,
     description: project.blurb ?? feedSubtitle(project),
+    alternates: { canonical: `/${project.slug}` },
   };
 }
 
@@ -39,175 +43,156 @@ export default async function ProjectPage({
   const prev = projects[(index - 1 + projects.length) % projects.length];
   const next = projects[(index + 1) % projects.length];
   const hasMultipleSections = project.sections.length > 1;
+  const hasMedia = project.images.length > 0 || (project.localClips?.length ?? 0) > 0;
 
-  const fields: [string, string | undefined][] = [
+  // "—" means "not filled in yet" in projects.ts, so those rows are left off the page.
+  const fields = [
     ["Location", project.location],
     ["Date", project.date],
     ["Link", project.link],
     ["Designer", project.designer],
-    ...project.credits.map((c): [string, string] => [c.label, c.value]),
-  ];
+    ...project.credits.map((c) => [c.label, c.value]),
+  ].filter((f): f is [string, string] => !!f[1] && f[1] !== "—");
 
   return (
     <div className="flex min-h-screen flex-col">
       <TopNav />
       <div className="flex flex-1 flex-col lg:flex-row">
-        <aside className="border-b border-line px-6 py-10 lg:sticky lg:top-0 lg:h-screen lg:w-96 lg:shrink-0 lg:overflow-y-auto lg:border-b-0 lg:border-r lg:px-10">
-          <Link
-            href="/projects"
-            className="mb-10 inline-block font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent"
-          >
-            ← Back to projects
-          </Link>
+        {/* Phones: title, then media, then the datafile. Desktop: one sticky sidebar. */}
+        <aside className="contents lg:sticky lg:top-0 lg:block lg:h-screen lg:w-96 lg:shrink-0 lg:overflow-y-auto lg:border-r lg:border-line lg:px-10 lg:py-10">
+          <div className="order-1 px-6 pt-8 lg:px-0 lg:pt-0">
+            <Link
+              href="/projects"
+              className="mb-8 inline-block font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent lg:mb-10"
+            >
+              ← Back to projects
+            </Link>
 
-          <div className="border-l-2 border-line pl-4">
-            <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-              Client
-            </dt>
-            <dd className="mt-1 text-lg text-foreground">{project.client}</dd>
-          </div>
-
-          <div className="mt-4 border-l-2 border-line pl-4">
-            <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-              Project{hasMultipleSections ? "s" : ""}
-            </dt>
-            <div className="mt-2 space-y-3">
-              {project.sections.map((s) => (
-                <div key={s.name}>
-                  {hasMultipleSections ? (
-                    <a href={`#${slugify(s.name)}`} className="text-lg text-foreground hover:text-accent">
-                      {s.name}
-                    </a>
-                  ) : (
-                    <p className="text-lg text-foreground">{s.name}</p>
-                  )}
-                  {s.description && <p className="text-sm text-muted">{s.description}</p>}
-                </div>
-              ))}
+            <div className="border-l-2 border-line pl-4">
+              <p className={labelClass}>Client</p>
+              <h1 className="mt-1 text-lg text-foreground">{project.client}</h1>
             </div>
-          </div>
 
-          <dl className="mt-4 space-y-4">
-            {fields.map(
-              ([label, value]) =>
-                value && (
-                  <div key={label} className="border-l-2 border-line pl-4">
-                    <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-                      {label}
-                    </dt>
-                    <dd className="mt-1 text-lg text-foreground">
-                      {label === "Link" ? (
-                        <a
-                          href={value}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="font-mono text-sm text-foreground underline decoration-line hover:text-accent hover:decoration-accent"
-                        >
-                          {value}
-                        </a>
-                      ) : (
-                        value
-                      )}
-                    </dd>
+            <div className="mt-4 border-l-2 border-line pl-4">
+              <p className={labelClass}>Project{hasMultipleSections ? "s" : ""}</p>
+              <div className="mt-2 space-y-3">
+                {project.sections.map((s) => (
+                  <div key={s.name}>
+                    {hasMultipleSections ? (
+                      <a href={`#${slugify(s.name)}`} className="text-lg text-foreground hover:text-accent">
+                        {s.name}
+                      </a>
+                    ) : (
+                      <p className="text-lg text-foreground">{s.name}</p>
+                    )}
+                    {s.description && <p className="text-sm text-muted">{s.description}</p>}
                   </div>
-                )
-            )}
-          </dl>
-
-          {project.blurb && (
-            <p className="mt-10 text-base leading-relaxed text-muted">{project.blurb}</p>
-          )}
-
-          {project.press && project.press.length > 0 && (
-            <div className="mt-10 border-l-2 border-line pl-4">
-              <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
-                Press
-              </dt>
-              <div className="mt-2 space-y-1.5">
-                {project.press.map((p) => (
-                  <a
-                    key={p.url}
-                    href={p.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block font-mono text-sm text-foreground underline decoration-line hover:text-accent hover:decoration-accent"
-                  >
-                    {p.outlet}
-                  </a>
                 ))}
               </div>
             </div>
-          )}
+          </div>
 
-          <div className="mt-14 flex items-center justify-between border-t border-line pt-6">
-            <Link
-              href={`/${prev.slug}`}
-              className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent"
+          <div className="order-3 border-t border-line px-6 py-8 lg:mt-4 lg:border-t-0 lg:p-0">
+            <dl className="space-y-4">
+              {fields.map(([label, value]) => (
+                <div key={label} className="border-l-2 border-line pl-4">
+                  <dt className={labelClass}>{label}</dt>
+                  <dd className="mt-1 text-lg text-foreground">
+                    {label === "Link" ? (
+                      <a href={value} target="_blank" rel="noopener noreferrer" className={`break-all ${linkClass}`}>
+                        {value.replace(/^https?:\/\/(www\.)?/, "").replace(/\/$/, "")}
+                      </a>
+                    ) : (
+                      value
+                    )}
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            {project.blurb && (
+              <p className="mt-10 text-base leading-relaxed text-muted">{project.blurb}</p>
+            )}
+
+            {project.press && project.press.length > 0 && (
+              <div className="mt-10 border-l-2 border-line pl-4">
+                <p className={labelClass}>Press</p>
+                <div className="mt-2 space-y-1.5">
+                  {project.press.map((p) => (
+                    <a
+                      key={p.url}
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`block ${linkClass}`}
+                    >
+                      {p.outlet}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            <nav
+              aria-label="More projects"
+              className="mt-14 flex items-center justify-between gap-4 border-t border-line pt-6 font-mono text-[10px] uppercase tracking-[0.15em] text-muted"
             >
-              ← {prev.client}
-            </Link>
-            <Link
-              href={`/${next.slug}`}
-              className="font-mono text-[10px] uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent"
-            >
-              {next.client} →
-            </Link>
+              <Link href={`/${prev.slug}`} className="transition-colors hover:text-accent">
+                ← {prev.client}
+              </Link>
+              <Link href={`/${next.slug}`} className="text-right transition-colors hover:text-accent">
+                {next.client} →
+              </Link>
+            </nav>
           </div>
         </aside>
 
-        <main className="flex-1 space-y-4 p-6 lg:p-10">
-          {project.videos && project.videos.length > 0 && (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {project.videos.map((v) => (
-                <VideoEmbed key={v.url} video={v} />
-              ))}
-            </div>
-          )}
+        <main className="order-2 min-w-0 flex-1 space-y-4 p-6 lg:p-10">
+          <EmbedGrid videos={project.videos} />
 
-          {project.localClips && project.localClips.length > 0 && (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {project.localClips.map((src) => (
-                <LocalClip key={src} src={src} />
-              ))}
-            </div>
-          )}
-
-          {project.placeholder || project.images.length === 0 ? (
+          {project.placeholder || !hasMedia ? (
             <ImageFrame className="flex aspect-[16/9] w-full items-center justify-center">
               <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-muted">
                 Photos coming soon
               </span>
             </ImageFrame>
           ) : (
-            <Lightbox images={project.images} alt={project.client} />
+            <MediaGrid clips={project.localClips} images={project.images} alt={project.client} />
           )}
 
           {hasMultipleSections &&
             project.sections.map((s) => (
-              <div key={s.name} id={slugify(s.name)} className="scroll-mt-6 border-t border-line pt-8">
-                <h3 className="text-xl text-foreground">{s.name}</h3>
-                {s.description && (
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
-                    {s.description}
-                  </p>
-                )}
-                {s.blurb && <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{s.blurb}</p>}
-                {s.videos && s.videos.length > 0 && (
-                  <div className="mt-4 grid grid-cols-1 gap-4 sm:grid-cols-2">
-                    {s.videos.map((v) => (
-                      <VideoEmbed key={v.url} video={v} />
-                    ))}
-                  </div>
-                )}
+              <section key={s.name} id={slugify(s.name)} className="scroll-mt-6 space-y-4 border-t border-line pt-8">
+                <div>
+                  <h2 className="text-xl text-foreground">{s.name}</h2>
+                  {s.description && (
+                    <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.15em] text-accent">
+                      {s.description}
+                    </p>
+                  )}
+                  {s.blurb && <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted">{s.blurb}</p>}
+                </div>
+                <EmbedGrid videos={s.videos} />
                 {s.images && s.images.length > 0 && (
-                  <div className="mt-4">
-                    <Lightbox images={s.images} alt={`${project.client} — ${s.name}`} />
-                  </div>
+                  <MediaGrid images={s.images} alt={`${project.client} — ${s.name}`} />
                 )}
-              </div>
+              </section>
             ))}
         </main>
       </div>
+    </div>
+  );
+}
+
+// An odd number of videos puts the first one full width so the grid never ends on a gap.
+function EmbedGrid({ videos }: { videos?: VideoEmbedType[] }) {
+  if (!videos || videos.length === 0) return null;
+  const hasLead = videos.length % 2 === 1;
+  return (
+    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+      {videos.map((v, i) => (
+        <VideoEmbed key={v.url} video={v} className={hasLead && i === 0 ? "sm:col-span-2" : ""} />
+      ))}
     </div>
   );
 }

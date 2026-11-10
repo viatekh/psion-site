@@ -1,53 +1,40 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef } from "react";
+
+const interactive = "a, button, [role='button'], input, textarea";
 
 export function CustomCursor() {
-  const [enabled, setEnabled] = useState(false);
-  const [pos, setPos] = useState({ x: -100, y: -100 });
-  const [hovering, setHovering] = useState(false);
-  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const ring = ref.current;
+    if (!ring) return;
+    const root = document.documentElement;
+
+    // Moved straight on the element — no React re-render per mouse move.
     const onMove = (e: PointerEvent) => {
       if (e.pointerType !== "mouse") return;
-      setEnabled(true);
-      setPos({ x: e.clientX, y: e.clientY });
-      setVisible(true);
-      const target = e.target as HTMLElement;
-      setHovering(!!target.closest("a, button, [role='button'], input, textarea"));
+      root.classList.add("custom-cursor");
+      ring.style.translate = `${e.clientX}px ${e.clientY}px`;
+      ring.style.opacity = "1";
+      ring.dataset.hover = String(e.target instanceof Element && !!e.target.closest(interactive));
     };
-    const onLeave = () => setVisible(false);
+    // Hide when the mouse leaves the window or goes into an embedded video player.
+    const onOut = (e: PointerEvent) => {
+      if (!e.relatedTarget || (e.relatedTarget instanceof Element && e.relatedTarget.tagName === "IFRAME")) {
+        ring.style.opacity = "0";
+      }
+    };
 
     window.addEventListener("pointermove", onMove);
-    document.addEventListener("mouseleave", onLeave);
+    document.addEventListener("pointerout", onOut);
     return () => {
       window.removeEventListener("pointermove", onMove);
-      document.removeEventListener("mouseleave", onLeave);
+      document.removeEventListener("pointerout", onOut);
+      root.classList.remove("custom-cursor");
     };
   }, []);
 
-  useEffect(() => {
-    if (!enabled) return;
-    document.body.style.cursor = "none";
-    return () => {
-      document.body.style.cursor = "";
-    };
-  }, [enabled]);
-
-  if (!enabled) return null;
-
-  return (
-    <div
-      aria-hidden
-      className="pointer-events-none fixed left-0 top-0 z-[100] rounded-full border border-accent transition-[width,height,opacity] duration-150 ease-out"
-      style={{
-        width: hovering ? 36 : 18,
-        height: hovering ? 36 : 18,
-        opacity: visible ? 1 : 0,
-        transform: `translate(${pos.x}px, ${pos.y}px) translate(-50%, -50%)`,
-        backgroundColor: hovering ? "color-mix(in srgb, var(--accent) 25%, transparent)" : "transparent",
-      }}
-    />
-  );
+  return <div ref={ref} aria-hidden data-hover="false" className="cursor-ring" />;
 }

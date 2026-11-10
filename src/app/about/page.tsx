@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { projects } from "@/data/projects";
-import { CornerBrackets, Crosshair } from "@/components/Decoration";
+import { CornerBrackets } from "@/components/Decoration";
+import { PageLabel } from "@/components/PageLabel";
 
 export const metadata: Metadata = {
   title: "About",
   description: "Sound, light and experience design studio founded in 2023 by Tekh Balance.",
+  alternates: { canonical: "/about" },
 };
 
 const clients = [
@@ -65,14 +67,11 @@ export default function AboutPage() {
       <main className="relative mx-auto max-w-3xl px-6 py-16 lg:px-0">
         <CornerBrackets />
 
-        <div className="flex items-center gap-3">
-          <Crosshair className="h-5 w-5 text-accent" />
-          <h1 className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">About</h1>
-        </div>
+        <PageLabel>About</PageLabel>
 
-        <p className="mt-6 text-3xl leading-snug text-foreground">
+        <h1 className="mt-6 text-3xl leading-snug text-foreground">
           Sound, light, and everything in between.
-        </p>
+        </h1>
 
         <div className="mt-10 space-y-6 text-base leading-relaxed text-foreground/90">
           <p>

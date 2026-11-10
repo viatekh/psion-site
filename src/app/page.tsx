@@ -1,7 +1,10 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 import { CornerBrackets, Crosshair, RingCircle } from "@/components/Decoration";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 // TODO: placeholder selection — remind Tekh to pick the best hero images later.
 const heroImages = [

@@ -45,6 +45,34 @@ a {
   text-underline-offset: 3px;
 }
 
+.cursor-ring {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 100;
+  width: 18px;
+  height: 18px;
+  margin: -9px 0 0 -9px;
+  border: 1px solid var(--accent);
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  transition: width 0.15s ease-out, height 0.15s ease-out, margin 0.15s ease-out,
+    opacity 0.15s ease-out, background-color 0.15s ease-out;
+}
+
+.cursor-ring[data-hover="true"] {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  background-color: color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
 @keyframes page-in {
   from {
     opacity: 0;

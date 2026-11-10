@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 
 const links = [
   { href: "/projects", label: "Projects" },
@@ -9,7 +12,13 @@ const links = [
   { href: "/contact", label: "Contact" },
 ];
 
+const otherPages = ["/", "/deploy", ...links.map((l) => l.href)];
+
 export function TopNav() {
+  const pathname = usePathname();
+  // Individual project pages live at the top level (/modem etc.), so they count as "Projects".
+  const current = otherPages.includes(pathname) ? pathname : "/projects";
+
   return (
     <header className="flex flex-wrap items-center border-b border-line">
       <Link
@@ -19,10 +28,10 @@ export function TopNav() {
         <Image
           src="/brand/icon-bold-white.png"
           alt=""
-          width={1872}
-          height={637}
+          width={41}
+          height={14}
           className="h-3.5 w-auto shrink-0"
-          priority
+          preload
         />
         Psion Systems
       </Link>
@@ -31,7 +40,10 @@ export function TopNav() {
           <Link
             key={l.href}
             href={l.href}
-            className="flex-1 border-r border-line px-4 py-4 text-center font-mono text-[11px] uppercase tracking-[0.2em] text-muted transition-colors hover:text-accent sm:flex-none sm:px-5 sm:text-left"
+            aria-current={current === l.href ? "page" : undefined}
+            className={`flex-1 border-r border-line px-4 py-4 text-center font-mono text-[11px] uppercase tracking-[0.2em] transition-colors hover:text-accent sm:flex-none sm:px-5 sm:text-left ${
+              current === l.href ? "text-accent" : "text-muted"
+            }`}
           >
             {l.label}
           </Link>

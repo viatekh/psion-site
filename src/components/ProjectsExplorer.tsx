@@ -1,12 +1,35 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { ReactNode, useEffect, useMemo, useRef, useState } from "react";
 import { Project, projectTypes, feedSubtitle } from "@/data/schema";
 import { Carousel } from "./Carousel";
 
+function FilterChip({
+  active,
+  onClick,
+  children,
+}: {
+  active: boolean;
+  onClick: () => void;
+  children: ReactNode;
+}) {
+  return (
+    <button
+      type="button"
+      aria-pressed={active}
+      onClick={onClick}
+      className={`shrink-0 whitespace-nowrap border px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.15em] transition-colors ${
+        active ? "border-accent bg-accent-dim text-accent" : "border-line text-muted hover:text-foreground"
+      }`}
+    >
+      {children}
+    </button>
+  );
+}
+
 export function ProjectsExplorer({ projects }: { projects: Project[] }) {
-  const [activeSlug, setActiveSlug] = useState(projects[0]?.slug ?? "");
+  const [scrolledSlug, setScrolledSlug] = useState(projects[0]?.slug ?? "");
   const [typeFilter, setTypeFilter] = useState<string | null>(null);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
@@ -14,6 +37,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
     () => (typeFilter ? projects.filter((p) => p.type === typeFilter) : projects),
     [projects, typeFilter]
   );
+  const activeSlug = visible.some((p) => p.slug === scrolledSlug) ? scrolledSlug : visible[0]?.slug;
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -21,10 +45,8 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
         const visibleEntry = entries
           .filter((e) => e.isIntersecting)
           .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-        if (visibleEntry) {
-          const slug = visibleEntry.target.getAttribute("data-slug");
-          if (slug) setActiveSlug(slug);
-        }
+        const slug = visibleEntry?.target.getAttribute("data-slug");
+        if (slug) setScrolledSlug(slug);
       },
       { rootMargin: "-20% 0px -60% 0px", threshold: [0, 0.25, 0.5, 0.75, 1] }
     );
@@ -43,37 +65,27 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
 
   return (
     <div className="flex flex-1 flex-col lg:flex-row">
-      <aside className="flex flex-col border-b border-line lg:sticky lg:top-0 lg:h-screen lg:w-72 lg:shrink-0 lg:overflow-y-auto lg:border-b-0 lg:border-r">
-        <div className="flex flex-wrap gap-2 border-b border-line p-4">
-          <button
-            onClick={() => setTypeFilter(null)}
-            className={`font-mono text-[10px] uppercase tracking-[0.15em] px-2.5 py-1 border transition-colors ${
-              typeFilter === null
-                ? "border-accent bg-accent-dim text-accent"
-                : "border-line text-muted hover:text-foreground"
-            }`}
-          >
+      <h1 className="sr-only">Projects</h1>
+
+      {/* On phones this is just a sticky filter bar; the full project index shows from lg up. */}
+      <aside className="sticky top-0 z-20 flex flex-col border-b border-line bg-background lg:h-screen lg:w-72 lg:shrink-0 lg:overflow-y-auto lg:border-b-0 lg:border-r">
+        <div className="flex gap-2 overflow-x-auto px-6 py-3 lg:flex-wrap lg:border-b lg:border-line lg:p-4">
+          <FilterChip active={typeFilter === null} onClick={() => setTypeFilter(null)}>
             All
-          </button>
+          </FilterChip>
           {projectTypes.map((type) => (
-            <button
-              key={type}
-              onClick={() => setTypeFilter(type)}
-              className={`font-mono text-[10px] uppercase tracking-[0.15em] px-2.5 py-1 border transition-colors ${
-                typeFilter === type
-                  ? "border-accent bg-accent-dim text-accent"
-                  : "border-line text-muted hover:text-foreground"
-              }`}
-            >
+            <FilterChip key={type} active={typeFilter === type} onClick={() => setTypeFilter(type)}>
               {type}
-            </button>
+            </FilterChip>
           ))}
         </div>
 
-        <nav className="flex flex-col p-2">
+        <nav aria-label="Projects" className="hidden flex-col p-2 lg:flex">
           {visible.map((p) => (
             <button
               key={p.slug}
+              type="button"
+              aria-current={activeSlug === p.slug}
               onClick={() => scrollToProject(p.slug)}
               className={`flex items-center gap-3 border-l-2 px-3 py-2.5 text-left font-mono text-[11px] uppercase tracking-[0.1em] transition-colors ${
                 activeSlug === p.slug
@@ -91,7 +103,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
           ))}
         </nav>
 
-        <div className="mt-auto border-t border-line p-2">
+        <div className="mt-auto hidden border-t border-line p-2 lg:block">
           <Link
             href="/other"
             className="flex items-center gap-3 border-l-2 border-transparent px-3 py-2.5 font-mono text-[11px] uppercase tracking-[0.1em] text-muted transition-colors hover:text-accent"
@@ -102,8 +114,8 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
         </div>
       </aside>
 
-      <main className="flex-1">
-        {visible.map((p) => (
+      <main className="min-w-0 flex-1">
+        {visible.map((p, i) => (
           <section
             key={p.slug}
             id={p.slug}
@@ -111,7 +123,7 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
             ref={(el) => {
               sectionRefs.current[p.slug] = el;
             }}
-            className="border-b border-line px-6 py-14 lg:px-12"
+            className="scroll-mt-12 border-b border-line px-6 py-10 lg:scroll-mt-0 lg:px-12 lg:py-14"
           >
             <div className="mb-5 flex items-baseline justify-between gap-4">
               <Link href={`/${p.slug}`} className="group">
@@ -132,9 +144,17 @@ export function ProjectsExplorer({ projects }: { projects: Project[] }) {
               slug={p.slug}
               alt={p.client}
               placeholder={p.placeholder}
+              preload={i === 0}
             />
           </section>
         ))}
+
+        <Link
+          href="/other"
+          className="block px-6 py-8 font-mono text-[11px] uppercase tracking-[0.15em] text-muted transition-colors hover:text-accent lg:hidden"
+        >
+          Other / Misc work →
+        </Link>
       </main>
     </div>
   );

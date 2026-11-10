@@ -28,7 +28,9 @@ import { Project, Credit } from "./schema";
 //   images    — photo file paths — ask Tekh before adding new photo files
 //   videos    — just paste the full YouTube or Vimeo URL, it figures out the rest.
 //               Add start: "1:26" to a video to make it start partway through.
-//   localClips — short video clips that play silently on a loop (file paths)
+//   localClips — short video clips that play silently on a loop (file paths).
+//               Each clip needs a still image saved beside it with "-poster.jpg"
+//               on the end (clip.mp4 → clip-poster.jpg) — ask Tekh.
 //   placeholder — set to true if there are no photos yet ("Photos coming soon")
 //
 // TO ADD A NEW PROJECT: copy an entire { ... } block below, paste it in the
@@ -54,8 +56,8 @@ export const projects: Project[] = [
     images: [
       "/projects/glastonbury/glastonbury1.jpg",
       "/projects/glastonbury/glastonbury2.jpg",
-      "/projects/glastonbury/glastonbury3.png",
-      "/projects/glastonbury/glastonbury4.png",
+      "/projects/glastonbury/glastonbury3.jpg",
+      "/projects/glastonbury/glastonbury4.jpg",
     ],
     videos: [
       { url: "https://vimeo.com/1174835441", label: "The Levels — show reel" },

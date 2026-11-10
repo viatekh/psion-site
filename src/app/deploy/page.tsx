@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
+import { PageLabel } from "@/components/PageLabel";
 import { EquipmentGrid } from "@/components/EquipmentGrid";
 import { equipment } from "@/data/equipment";
 
@@ -14,7 +15,7 @@ export default function DeployPage() {
       <TopNav />
       <main className="flex-1">
         <div className="px-6 py-14 lg:px-12">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Deploy</p>
+          <PageLabel>Deploy</PageLabel>
           <h1 className="mt-4 max-w-lg text-2xl text-foreground sm:text-3xl">
             Straightforward DJ &amp; audio equipment hire.
           </h1>

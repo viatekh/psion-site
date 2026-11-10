@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
+import { PageLabel } from "@/components/PageLabel";
 
 export const metadata: Metadata = {
   title: "Process",
   description: "How a project with Psion Systems actually runs, start to finish.",
+  alternates: { canonical: "/process" },
 };
 
 const steps = [
@@ -43,7 +45,7 @@ export default function ProcessPage() {
     <div className="flex min-h-screen flex-col">
       <TopNav />
       <main className="mx-auto max-w-2xl px-6 py-16 lg:px-0">
-        <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-accent">Process</p>
+        <PageLabel>Process</PageLabel>
         <h1 className="mt-6 text-2xl text-foreground sm:text-3xl">
           How a project with us actually runs.
         </h1>

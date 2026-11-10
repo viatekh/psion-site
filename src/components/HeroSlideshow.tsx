@@ -8,68 +8,68 @@ export type HeroImage = { src: string; slug: string };
 
 // TODO: placeholder selection — swap for the best hero shots once picked.
 export function HeroSlideshow({ images }: { images: HeroImage[] }) {
-  const [index, setIndex] = useState(0);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [offset, setOffset] = useState({ x: 0, y: 0 });
+  const [slide, setSlide] = useState<{ index: number; prev: number | null }>({ index: 0, prev: null });
+  const layerRef = useRef<HTMLDivElement>(null);
+  const count = images.length;
+  const next = (slide.index + 1) % count;
 
   useEffect(() => {
-    const id = setInterval(() => setIndex((i) => (i + 1) % images.length), 6000);
-    return () => clearInterval(id);
-  }, [images.length]);
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  useEffect(() => {
-    const el = containerRef.current;
-    if (!el) return;
+    const timer = setInterval(
+      () => setSlide((s) => ({ index: (s.index + 1) % count, prev: s.index })),
+      6000
+    );
 
+    let frame = 0;
     const onMove = (e: MouseEvent) => {
-      const rect = el.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
-      const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
-      setOffset({ x, y });
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        if (layerRef.current) layerRef.current.style.translate = `${x * -10}px ${y * -10}px`;
+      });
     };
-    const onLeave = () => setOffset({ x: 0, y: 0 });
+    window.addEventListener("mousemove", onMove);
 
-    el.addEventListener("mousemove", onMove);
-    el.addEventListener("mouseleave", onLeave);
     return () => {
-      el.removeEventListener("mousemove", onMove);
-      el.removeEventListener("mouseleave", onLeave);
+      clearInterval(timer);
+      cancelAnimationFrame(frame);
+      window.removeEventListener("mousemove", onMove);
     };
-  }, []);
+  }, [count]);
 
   return (
-    <div ref={containerRef} className="absolute inset-0 overflow-hidden bg-background">
-      <div
-        className="absolute inset-[-3%] transition-transform duration-300 ease-out"
-        style={{ transform: `translate(${offset.x * -10}px, ${offset.y * -10}px) scale(1.03)` }}
-      >
-        {images.map((img, i) => (
-          <Link
-            key={img.src}
-            href={`/${img.slug}`}
-            className="absolute inset-0 block transition-opacity duration-[1500ms] ease-in-out"
-            style={{ opacity: i === index ? 1 : 0, pointerEvents: i === index ? "auto" : "none" }}
-            tabIndex={i === index ? 0 : -1}
-            aria-hidden={i !== index}
-          >
-            <Image
-              src={img.src}
-              alt=""
-              fill
-              priority={i === 0}
-              sizes="100vw"
-              className="object-cover"
-            />
-          </Link>
-        ))}
+    <div className="absolute inset-0 overflow-hidden bg-background">
+      <div ref={layerRef} className="absolute inset-[-3%] scale-[1.03] transition-[translate] duration-300 ease-out">
+        {images.map((img, i) => {
+          const isActive = i === slide.index;
+          // Only the current slide, the one fading out and the one up next are ever downloaded.
+          const mounted = isActive || i === slide.prev || i === next;
+          return (
+            <Link
+              key={img.src}
+              href={`/${img.slug}`}
+              className="absolute inset-0 block transition-opacity duration-[1500ms] ease-in-out"
+              style={{ opacity: isActive ? 1 : 0, pointerEvents: isActive ? "auto" : "none" }}
+              tabIndex={isActive ? 0 : -1}
+              aria-hidden={!isActive}
+            >
+              {mounted && (
+                <Image src={img.src} alt="" fill preload={i === 0} sizes="100vw" className="object-cover" />
+              )}
+            </Link>
+          );
+        })}
       </div>
-      <div className="pointer-events-none absolute inset-0 bg-background/70" />
+      <div
+        className="pointer-events-none absolute inset-0 bg-background/60 lg:bg-transparent lg:[background-image:linear-gradient(90deg,rgba(10,10,10,0.9)_0%,rgba(10,10,10,0.6)_40%,rgba(10,10,10,0.2)_100%)]"
+        aria-hidden
+      />
       <div
         className="pointer-events-none absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, transparent 30%, rgba(5,6,5,0.6) 100%)",
-        }}
+        style={{ background: "radial-gradient(ellipse at center, transparent 40%, rgba(5,6,5,0.5) 100%)" }}
+        aria-hidden
       />
     </div>
   );

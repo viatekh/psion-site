@@ -16,6 +16,7 @@ const label = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://psion.systems"),
   title: {
     default: "Psion Systems",
     template: "%s — Psion Systems",

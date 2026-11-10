@@ -13,9 +13,9 @@ export function ImageFrame({
       <div
         className="pointer-events-none absolute inset-0"
         style={{
-          boxShadow: "inset 0 0 60px 10px rgba(5, 6, 5, 0.55)",
+          boxShadow: "inset 0 0 40px 4px rgba(5, 6, 5, 0.4)",
           background:
-            "radial-gradient(ellipse at center, transparent 45%, rgba(5,6,5,0.35) 100%)",
+            "radial-gradient(ellipse at center, transparent 55%, rgba(5,6,5,0.2) 100%)",
         }}
         aria-hidden
       />

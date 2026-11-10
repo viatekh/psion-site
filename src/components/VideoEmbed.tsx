@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
 import { VideoEmbed as VideoEmbedType, parseVideoUrl } from "@/data/schema";
+import { useInView } from "@/lib/useInView";
 
 const srcFor = (v: VideoEmbedType) => {
   const parsed = parseVideoUrl(v);
@@ -16,26 +16,15 @@ const srcFor = (v: VideoEmbedType) => {
   return `https://www.youtube.com/embed/${parsed.id}?autoplay=1&mute=1&loop=1&playlist=${parsed.id}${startParam}`;
 };
 
-export function VideoEmbed({ video }: { video: VideoEmbedType }) {
+export function VideoEmbed({ video, className = "" }: { video: VideoEmbedType; className?: string }) {
   const src = srcFor(video);
-  const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting), {
-      rootMargin: "200px",
-      threshold: 0.1,
-    });
-    observer.observe(el);
-    return () => observer.disconnect();
-  }, []);
+  // Players only exist while on screen, so a page of embeds never runs them all at once.
+  const [ref, inView] = useInView<HTMLDivElement>();
 
   if (!src) return null;
 
   return (
-    <div ref={ref} className="border border-line bg-surface">
+    <div ref={ref} className={`border border-line bg-surface ${className}`}>
       <div className="relative aspect-video">
         {inView && (
           <iframe

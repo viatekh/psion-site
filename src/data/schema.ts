@@ -38,6 +38,9 @@ export type Project = {
   placeholder?: boolean;
 };
 
+// Each clip has a still frame saved next to it, e.g. clip.mp4 → clip-poster.jpg.
+export const posterFor = (clip: string) => clip.replace(/\.mp4$/, "-poster.jpg");
+
 export const projectTypes = ["Festival", "Club", "Concert", "Private Client"] as const;
 
 export const feedSubtitle = (p: Project) =>

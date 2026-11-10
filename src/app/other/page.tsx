@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import { TopNav } from "@/components/TopNav";
-import { ImageFrame } from "@/components/ImageFrame";
-import { LocalClip } from "@/components/LocalClip";
+import { MediaGrid } from "@/components/MediaGrid";
 import { otherWork, otherImages, otherClips } from "@/data/projects";
 
 export const metadata: Metadata = {
   title: "Other / Misc",
   description: "Smaller jobs and subcontracted work from Psion Systems.",
+  alternates: { canonical: "/other" },
 };
 
 export default function OtherPage() {
@@ -26,7 +25,7 @@ export default function OtherPage() {
 
           <div className="border-l-2 border-line pl-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">Project</p>
-            <p className="mt-1 text-lg text-foreground">Other / Misc</p>
+            <h1 className="mt-1 text-lg text-foreground">Other / Misc</h1>
           </div>
 
           <p className="mt-6 text-base leading-relaxed text-muted">
@@ -47,16 +46,7 @@ export default function OtherPage() {
         </aside>
 
         <main className="flex-1 p-6 lg:p-10">
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-            {otherImages.map((src) => (
-              <ImageFrame key={src} className="aspect-[4/3]">
-                <Image src={src} alt="Other work" fill sizes="(min-width: 640px) 50vw, 100vw" className="object-cover" />
-              </ImageFrame>
-            ))}
-            {otherClips.map((src) => (
-              <LocalClip key={src} src={src} />
-            ))}
-          </div>
+          <MediaGrid clips={otherClips} images={otherImages} alt="Other work" />
         </main>
       </div>
     </div>
