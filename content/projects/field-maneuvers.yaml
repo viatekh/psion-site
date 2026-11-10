@@ -1,0 +1,30 @@
+client: Field Maneuvers
+type: Festival
+disciplines:
+  - Video
+placeholder: false
+sections:
+  - name: VJ Residency
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: UK
+date: 2019 — present
+designer: ''
+credits:
+  - label: VJ residency and visual design
+    value: Psion Systems
+press: []
+blurb: 'Visuals residency at Field Maneuvers: a live VJ set on the main stage every year since 2019.'
+videos:
+  - url: https://vimeo.com/1174865437
+    label: ''
+    start: ''
+localClips:
+  - /projects/field-maneuvers/fieldmaneuvers-clip1.mp4
+  - /projects/field-maneuvers/fieldmaneuvers-clip2.mp4
+images:
+  - /projects/field-maneuvers/images/0.jpg
+  - /projects/field-maneuvers/images/1.jpg
+  - /projects/field-maneuvers/images/2.jpg

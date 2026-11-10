@@ -1,0 +1,24 @@
+client: Freerotation
+type: Festival
+disciplines:
+  - Production
+  - Light
+  - Video
+placeholder: true
+sections:
+  - name: Technical Production Manager
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: Wales, UK
+date: ''
+designer: ''
+credits:
+  - label: Technical production management
+    value: Psion Systems
+press: []
+blurb: Supply of all DJ and backline. Design and control of all lighting and projection systems.
+videos: []
+localClips: []
+images: []

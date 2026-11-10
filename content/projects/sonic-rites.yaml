@@ -1,0 +1,33 @@
+client: Sonic Rites
+type: Club
+disciplines:
+  - LED
+  - Fabrication
+placeholder: false
+sections:
+  - name: '"HexEye"'
+    description: Custom lighting piece
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: '2024'
+designer: ''
+credits:
+  - label: Design and fabrication
+    value: Psion Systems
+  - label: Fabrication method
+    value: 3D printed
+  - label: Light source
+    value: LED
+  - label: Medium
+    value: Visuals
+press: []
+blurb: ''
+videos: []
+localClips: []
+images:
+  - /projects/sonic-rites/images/0.jpg
+  - /projects/sonic-rites/images/1.jpg
+  - /projects/sonic-rites/images/2.jpg
+  - /projects/sonic-rites/images/3.jpg

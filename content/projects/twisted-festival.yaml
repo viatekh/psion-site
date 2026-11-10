@@ -1,0 +1,30 @@
+client: Twisted Festival
+type: Festival
+disciplines:
+  - Light
+placeholder: false
+sections:
+  - name: Immersive Lighting
+    description: Woodland stage rigged off the trees
+    blurb: ''
+    videos: []
+    images: []
+location: UK
+date: ''
+designer: ''
+credits:
+  - label: Design and deployment
+    value: Psion Systems
+  - label: Operator
+    value: Auratekh & ___ordep
+  - label: Control
+    value: MADRIX & Avolites
+  - label: Fixtures
+    value: GLX Productions, JEM Professional, Chauvet Pro, Prolight Group, Look Solutions
+press: []
+blurb: Immersive lighting working with the beautiful woodland setting, with different levels of height only possible by rigging off the trees.
+videos: []
+localClips: []
+images:
+  - /projects/twisted-festival/images/0.jpg
+  - /projects/twisted-festival/images/1.jpg

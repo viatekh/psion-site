@@ -1,0 +1,23 @@
+client: FOLD
+type: Club
+disciplines:
+  - LED
+  - Light
+placeholder: true
+sections:
+  - name: Steam Room
+    description: LED installation
+    blurb: ''
+    videos: []
+    images: []
+location: London, UK
+date: ''
+designer: ''
+credits:
+  - label: Lighting design and operation
+    value: Psion Systems
+press: []
+blurb: ''
+videos: []
+localClips: []
+images: []

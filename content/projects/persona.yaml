@@ -1,0 +1,26 @@
+client: Persona
+type: Club
+disciplines:
+  - Light
+placeholder: false
+sections:
+  - name: Lighting Design and Operation
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: ''
+designer: ''
+credits:
+  - label: Lighting design and operation
+    value: Psion Systems
+press: []
+blurb: ''
+videos: []
+localClips: []
+images:
+  - /projects/persona/images/0.jpeg
+  - /projects/persona/images/1.jpeg
+  - /projects/persona/images/2.jpeg
+  - /projects/persona/images/3.jpeg

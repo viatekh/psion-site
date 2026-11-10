@@ -3,6 +3,7 @@ import { Inter, IBM_Plex_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { CustomCursor } from "@/components/CustomCursor";
 import { Footer } from "@/components/Footer";
+import { SiteChrome } from "@/components/SiteChrome";
 import "./globals.css";
 
 const body = Inter({
@@ -33,9 +34,13 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${body.variable} ${label.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <CustomCursor />
+        <SiteChrome>
+          <CustomCursor />
+        </SiteChrome>
         {children}
-        <Footer />
+        <SiteChrome>
+          <Footer />
+        </SiteChrome>
         <Analytics />
       </body>
     </html>

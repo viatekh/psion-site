@@ -1,0 +1,31 @@
+client: Mary Lattimore
+type: Concert
+disciplines:
+  - Video
+  - Sound
+placeholder: false
+sections:
+  - name: Resonance
+    description: Multi-projector visual mapping and sound reinforcement
+    blurb: ''
+    videos: []
+    images: []
+location: Todmorden Unitarian Church, UK
+date: ''
+designer: ''
+credits:
+  - label: Multi-projector visual mapping
+    value: Psion Systems
+  - label: Mixing and sound reinforcement
+    value: Psion Systems
+press: []
+blurb: Mary Lattimore and Walt McClements are two of contemporary music's most renowned innovators. Each has managed to expand the perception of their instrument's capabilities. Mary's inventive harp processing and looping have brought the instrument to a new audience, and her prolific run of celestial solo albums and evocative film scores have redefined harp playing in the modern consciousness. Psion Systems worked with the Resonance team to develop a special multi-projector install of Todmorden Unitarian Church, carefully mapping selected features of the church to display intricate visuals developed specially for the event. Mixing and sound reinforcement services were also provided to ensure the delicate fidelity of Mary's harp playing was heard in the unique acoustics of the sacred building.
+videos: []
+localClips: []
+images:
+  - /projects/mary-lattimore/images/0.jpeg
+  - /projects/mary-lattimore/images/1.jpg
+  - /projects/mary-lattimore/images/2.jpeg
+  - /projects/mary-lattimore/images/3.jpg
+  - /projects/mary-lattimore/images/4.jpg
+  - /projects/mary-lattimore/images/5.jpeg

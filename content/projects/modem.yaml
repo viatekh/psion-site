@@ -1,0 +1,57 @@
+client: MO:DEM Festival
+type: Festival
+disciplines:
+  - LED
+  - Fabrication
+placeholder: false
+sections:
+  - name: The Hive
+    description: LED configuration and operation
+    blurb: When it comes to The Hive, we could spend days describing its mind-blowing design, the world-famous artists, musicians, and DJs who graced its stage, or the sheer amount of materials used in its construction – screws, plywood, paint, glue, miles of LED strips and cables, and countless hours of dedicated work poured into its creation.
+    videos:
+      - url: https://www.youtube.com/watch?v=YSYAL49Ohyo
+        label: ''
+        start: ''
+      - url: https://www.youtube.com/watch?v=H2HJMRCgoY0
+        label: ''
+        start: ''
+      - url: https://www.youtube.com/watch?v=DySRlW9LcyI
+        label: ''
+        start: ''
+    images: []
+  - name: The Seed
+    description: LED configuration and operation
+    blurb: ''
+    videos:
+      - url: https://www.youtube.com/watch?v=r-LtvKzYd0E
+        label: ''
+        start: '1:26'
+    images: []
+  - name: The Seed (2026)
+    description: Complete redesign, LED install, stage fabrication, operation and control
+    blurb: ''
+    videos: []
+    images: []
+  - name: The Hive (2027)
+    description: Coming soon...
+    blurb: ''
+    videos: []
+    images: []
+location: Croatia
+date: 2024 — 2027
+link: https://www.instagram.com/modemfestival/
+designer: David Haasnoot
+credits:
+  - label: LED installation
+    value: Decorination
+  - label: LED programming and operation
+    value: Psion Systems
+press: []
+blurb: ''
+videos: []
+localClips: []
+images:
+  - /projects/modem/images/0.jpg
+  - /projects/modem/images/1.jpg
+  - /projects/modem/images/2.jpg
+  - /projects/modem/images/3.jpg

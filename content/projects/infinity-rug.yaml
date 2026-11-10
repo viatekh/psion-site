@@ -1,0 +1,29 @@
+client: Infinity Rug
+type: Concert
+disciplines:
+  - Light
+  - LED
+placeholder: false
+sections:
+  - name: '"Dendrite"'
+    description: Custom LED installation based on root systems
+    blurb: ''
+    videos: []
+    images: []
+location: Berlin, Germany
+date: ''
+designer: ''
+credits:
+  - label: Lighting design and programming
+    value: Psion Systems
+press: []
+blurb: Infinity Rug is a sonic-seance, a deep listening event presenting a soundscape of field recordings, ambient, experimental and deep-mind music, interwoven with ceremonial performances, texts and poetry, scents, textiles and food offerings. Psion Systems designed and programmed a rich and engaging lighting design for the Berlin edition, featuring "Dendrite" — a custom LED installation based on the root systems found beneath our feet.
+videos:
+  - url: https://www.youtube.com/watch?v=WBXgk5-1yxM
+    label: ''
+    start: ''
+localClips:
+  - /projects/infinity-rug/infinity-rug-clip.mp4
+images:
+  - /projects/infinity-rug/images/0.jpg
+  - /projects/infinity-rug/images/1.jpg

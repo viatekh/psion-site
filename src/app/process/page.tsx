@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { PageLabel } from "@/components/PageLabel";
+import { getProcess } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Process",
@@ -9,33 +10,19 @@ export const metadata: Metadata = {
   alternates: { canonical: "/process" },
 };
 
-const steps = [
-  { name: "Hello", body: "Email or Instagram. A rough idea is plenty." },
-  {
-    name: "Talk",
-    body: "A call about the brief, the space, the budget and the deadline. We'll tell you what's actually possible.",
-  },
-  { name: "Plan", body: "Scope, timeline and price, written down. The price only moves if the job does." },
-  { name: "Book", body: "A deposit holds the date, the kit and the crew." },
-  {
-    name: "Build",
-    body: "Design, fabrication, programming. All of it built and tested in the workshop before it goes near a van.",
-  },
-  { name: "Show", body: "We install it, run it and take it down. You watch." },
-  { name: "After", body: "Final invoice. A debrief if you want one: what worked, what we'd change." },
-];
 
-export default function ProcessPage() {
+export default async function ProcessPage() {
+  const { headline, intro, steps } = await getProcess();
   return (
     <div className="flex flex-1 flex-col">
       <TopNav />
       <main className="mx-auto max-w-2xl px-6 py-16 lg:px-0">
         <PageLabel>Process</PageLabel>
         <h1 className="mt-6 text-2xl text-foreground sm:text-3xl">
-          How it goes.
+          {headline}
         </h1>
         <p className="mt-4 max-w-md text-base leading-relaxed text-muted">
-          Same seven steps for a festival stage or a pair of decks.
+          {intro}
         </p>
 
         <ol className="mt-14 border-l border-line pl-8">

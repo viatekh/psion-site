@@ -1,5 +1,5 @@
 // Type definitions and helper functions for the projects data.
-// You shouldn't need to touch this file — see projects.ts for the actual content.
+// The content itself is edited at /keystatic and saved in the /content folder.
 
 export type Credit = { label: string; value: string };
 export type Press = { outlet: string; url: string };
@@ -48,8 +48,10 @@ export const projectDisciplines = ["Light", "LED", "Sound", "Video", "Fabricatio
 export type Discipline = (typeof projectDisciplines)[number];
 
 export const feedSubtitle = (p: Project) =>
-  p.sections.length === 1
-    ? p.sections[0].description
+  p.sections.length <= 1
+    ? !p.sections[0]
+      ? ""
+      : p.sections[0].description
       ? `${p.sections[0].name} — ${p.sections[0].description}`
       : p.sections[0].name
     : p.sections.map((s) => s.name).join(" · ");

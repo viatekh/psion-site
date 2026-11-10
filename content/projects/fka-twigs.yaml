@@ -1,0 +1,27 @@
+client: FKA Twigs
+type: Concert
+disciplines:
+  - Sound
+placeholder: false
+sections:
+  - name: '"The Eleven" @ Sotheby''s'
+    description: Funktion-One sound system
+    blurb: ''
+    videos: []
+    images: []
+location: London, UK
+date: ''
+designer: ''
+credits:
+  - label: Sound system design and operation
+    value: Psion Systems
+press: []
+blurb: The Eleven is a durational artwork, conceived by artist FKA twigs and performed by a rotating group of eleven 'movers.' The piece, developed by twigs over many months, is a physical and artistic quest for self-healing, rooted – in part – in her decades spent in movement practice, somatic healing technique and by implementing conscious action on repeat. twigs herself participated alongside a changing cast of special guests, embodying the method and recording in real time the changes they felt in mind and body. Psion Systems deployed and tuned a timeless Funktion-One sound system with a contemporary low-end flair to soundtrack the two-week performance at Sotheby's, London.
+videos:
+  - url: https://www.youtube.com/watch?v=pewBhu6MXsg
+    label: ''
+    start: ''
+localClips: []
+images:
+  - /projects/fka-twigs/images/0.jpg
+  - /projects/fka-twigs/images/1.jpg

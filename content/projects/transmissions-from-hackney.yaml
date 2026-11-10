@@ -1,0 +1,26 @@
+client: Transmissions from Hackney
+type: Club
+disciplines:
+  - Light
+placeholder: false
+sections:
+  - name: Lighting Design and Operation
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: Hackney, London
+date: '2024'
+designer: ''
+credits:
+  - label: Lighting design and operation
+    value: Psion Systems
+press: []
+blurb: ''
+videos: []
+localClips: []
+images:
+  - /projects/transmissions-from-hackney/images/0.jpg
+  - /projects/transmissions-from-hackney/images/1.jpg
+  - /projects/transmissions-from-hackney/images/2.jpg
+  - /projects/transmissions-from-hackney/images/3.jpg

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { TopNav } from "@/components/TopNav";
 import { ProjectsExplorer } from "@/components/ProjectsExplorer";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -9,7 +9,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const projects = await getProjects();
   return (
     <div className="flex flex-1 flex-col">
       <TopNav />

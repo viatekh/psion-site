@@ -5,14 +5,15 @@ import { TopNav } from "@/components/TopNav";
 import { ImageFrame } from "@/components/ImageFrame";
 import { VideoEmbed } from "@/components/VideoEmbed";
 import { MediaGrid } from "@/components/MediaGrid";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/content";
 import { feedSubtitle, VideoEmbed as VideoEmbedType } from "@/data/schema";
 
 const labelClass = "font-mono text-[10px] uppercase tracking-[0.15em] text-accent";
 const linkClass =
   "font-mono text-sm text-foreground underline decoration-line hover:text-accent hover:decoration-accent";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
+  const projects = await getProjects();
   return projects.map((p) => ({ slug: p.slug }));
 }
 
@@ -22,6 +23,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
+  const projects = await getProjects();
   const project = projects.find((p) => p.slug === slug);
   if (!project) return {};
   return {
@@ -37,6 +39,7 @@ export default async function ProjectPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const projects = await getProjects();
   const index = projects.findIndex((p) => p.slug === slug);
   if (index === -1) notFound();
   const project = projects[index];
@@ -45,14 +48,14 @@ export default async function ProjectPage({
   const hasMultipleSections = project.sections.length > 1;
   const hasMedia = project.images.length > 0 || (project.localClips?.length ?? 0) > 0;
 
-  // "—" means "not filled in yet" in projects.ts, so those rows are left off the page.
+  // Rows left empty in the editor are left off the page.
   const fields = [
     ["Location", project.location],
     ["Date", project.date],
     ["Link", project.link],
     ["Designer", project.designer],
     ...project.credits.map((c) => [c.label, c.value]),
-  ].filter((f): f is [string, string] => !!f[1] && f[1] !== "—");
+  ].filter((f): f is [string, string] => !!f[1]);
 
   return (
     <div className="flex flex-1 flex-col">

@@ -1,0 +1,27 @@
+client: Above Below
+type: Club
+disciplines:
+  - Light
+  - Sound
+placeholder: false
+sections:
+  - name: The Beacon
+    description: Lighting design and operation
+    blurb: ''
+    videos: []
+    images: []
+  - name: The Coombe
+    description: 4-point Funktion-One sound system
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: ''
+designer: ''
+credits: []
+press: []
+blurb: ''
+videos: []
+localClips: []
+images:
+  - /projects/above-below/images/0.jpg

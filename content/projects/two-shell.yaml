@@ -1,0 +1,37 @@
+client: Two Shell
+type: Concert
+disciplines:
+  - LED
+  - Fabrication
+placeholder: false
+sections:
+  - name: LED Blinder / Strobe Rig
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: '2025'
+designer: ''
+credits:
+  - label: Design, fabrication and programming
+    value: Psion Systems
+  - label: Chassis
+    value: Aluminium
+  - label: Control
+    value: 16-bit DMX
+  - label: Rigging
+    value: 8-point flexible system
+press: []
+blurb: Custom LED blinder / strobe for @twoshell's 2025 world tour. Inspired by the oppressive clinicality of cold white office lighting.
+videos:
+  - url: https://www.youtube.com/watch?v=aKirHi-mLvM
+    label: ''
+    start: ''
+localClips:
+  - /projects/two-shell/3shell-ig.mp4
+images:
+  - /projects/two-shell/images/0.jpeg
+  - /projects/two-shell/images/1.jpeg
+  - /projects/two-shell/images/2.jpeg
+  - /projects/two-shell/images/3.jpeg

@@ -1,0 +1,27 @@
+client: BOOM Festival
+type: Festival
+disciplines:
+  - LED
+  - Light
+placeholder: false
+sections:
+  - name: Dance Temple, Alchemy Circle
+    description: LED system install and operation
+    blurb: ''
+    videos: []
+    images: []
+location: Idanha-a-Nova, Portugal
+date: ''
+designer: ''
+credits:
+  - label: Lighting design and operation
+    value: Psion Systems
+press: []
+blurb: ''
+videos: []
+localClips: []
+images:
+  - /projects/boom-festival/images/0.jpg
+  - /projects/boom-festival/images/1.jpg
+  - /projects/boom-festival/images/2.jpg
+  - /projects/boom-festival/images/3.jpg

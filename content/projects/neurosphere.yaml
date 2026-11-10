@@ -1,0 +1,28 @@
+client: Neurosphere
+type: Festival
+disciplines:
+  - Light
+  - Fabrication
+placeholder: false
+sections:
+  - name: Art Installation
+    description: 8m geodesic dome
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: ''
+designer: ''
+credits:
+  - label: Design, installation and programming
+    value: Psion Systems
+press: []
+blurb: Neurosphere is an art installation seeking to draw parallels between mycelium networks, the internet, and the human brain — housed in a custom-built 8m geodesic dome structure.
+videos: []
+localClips:
+  - /projects/neurosphere/neurosphere-clip1.mp4
+  - /projects/neurosphere/neurosphere-clip2.mp4
+images:
+  - /projects/neurosphere/images/0.jpg
+  - /projects/neurosphere/images/1.jpg
+  - /projects/neurosphere/images/2.jpg

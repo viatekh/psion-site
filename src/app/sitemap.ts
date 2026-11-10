@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
-import { projects } from "@/data/projects";
+import { getProjects } from "@/data/content";
 
 const base = "https://psion.systems";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const projects = await getProjects();
   const pages = ["", "/projects", "/process", "/about", "/contact", "/other"];
   return [...pages, ...projects.map((p) => `/${p.slug}`)].map((path) => ({ url: `${base}${path}` }));
 }

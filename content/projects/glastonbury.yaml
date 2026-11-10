@@ -1,0 +1,39 @@
+client: Glastonbury Festival
+type: Festival
+disciplines:
+  - LED
+placeholder: false
+sections:
+  - name: Levels Stage
+    description: MADRIX programming, LED install and config
+    blurb: ''
+    videos: []
+    images: []
+location: Silver Hayes, Glastonbury Festival, UK
+date: ''
+designer: ''
+credits:
+  - label: Lighting design
+    value: Refrakt Labs (James Newmarch)
+  - label: MADRIX programming
+    value: Psion Systems
+  - label: LED install and config
+    value: Psion Systems
+  - label: LED operation
+    value: Celestial Artillery & Ronan Somerville
+press: []
+blurb: Featured on MADRIX's official YouTube channel for the Levels stage build and show.
+videos:
+  - url: https://vimeo.com/1174835441
+    label: The Levels — show reel
+    start: ''
+  - url: https://www.youtube.com/watch?v=H7XCbg58DIc
+    label: Featured on MADRIX
+    start: ''
+localClips:
+  - /projects/glastonbury/glastonbury-clip1.mp4
+images:
+  - /projects/glastonbury/images/0.jpg
+  - /projects/glastonbury/images/1.jpg
+  - /projects/glastonbury/images/2.jpg
+  - /projects/glastonbury/images/3.jpg

@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { MediaGrid } from "@/components/MediaGrid";
-import { otherWork, otherImages, otherClips } from "@/data/projects";
+import { getOther } from "@/data/content";
 
 export const metadata: Metadata = {
   title: "Other / Misc",
@@ -10,7 +10,8 @@ export const metadata: Metadata = {
   alternates: { canonical: "/other" },
 };
 
-export default function OtherPage() {
+export default async function OtherPage() {
+  const other = await getOther();
   return (
     <div className="flex flex-1 flex-col">
       <TopNav />
@@ -29,11 +30,11 @@ export default function OtherPage() {
           </div>
 
           <p className="mt-6 text-base leading-relaxed text-muted">
-            Smaller jobs, one-offs and subcontracted work. No full page, still ours.
+            {other.intro}
           </p>
 
           <dl className="mt-8 space-y-4">
-            {otherWork.map((c) => (
+            {other.work.map((c) => (
               <div key={c.label} className="border-l-2 border-line pl-4">
                 <dt className="font-mono text-[10px] uppercase tracking-[0.15em] text-accent">
                   {c.label}
@@ -45,7 +46,7 @@ export default function OtherPage() {
         </aside>
 
         <main className="flex-1 p-6 lg:p-10">
-          <MediaGrid clips={otherClips} images={otherImages} alt="Other work" />
+          <MediaGrid clips={[...other.clips]} images={other.images} alt="Other work" />
         </main>
       </div>
     </div>

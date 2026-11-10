@@ -1,0 +1,36 @@
+client: Space Between
+type: Club
+disciplines:
+  - Light
+placeholder: false
+sections:
+  - name: Lighting Design
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: '2024'
+designer: ''
+credits:
+  - label: Lighting design
+    value: Psion Systems
+  - label: Set design
+    value: Anastasia McGarel [Bazaar] & Liam Oades [Duke Makes]
+press:
+  - outlet: Resident Advisor
+    url: https://ra.co/events/1886881
+  - outlet: Imaginarium
+    url: https://imaginarium.space/2024/04/11/interview-feature-chris-ianson-space-between/
+blurb: Deep in the forest certain trees of wisdom can be found - join the circle and take root. Space Between is a different kind of audio/visual experience from the mind behind On Rotation. We'll be transforming the event space with a focus on the dancefloor experience and away from the DJ.
+videos: []
+localClips:
+  - /projects/space-between/spacebetween-clip1.mp4
+  - /projects/space-between/spacebetween-clip2.mp4
+  - /projects/space-between/spacebetween-clip3.mp4
+images:
+  - /projects/space-between/images/0.jpg
+  - /projects/space-between/images/1.jpg
+  - /projects/space-between/images/2.jpg
+  - /projects/space-between/images/3.jpg
+  - /projects/space-between/images/4.jpg

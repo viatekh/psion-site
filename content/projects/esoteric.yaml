@@ -1,0 +1,26 @@
+client: Esoteric Festival
+type: Festival
+disciplines:
+  - Light
+placeholder: false
+sections:
+  - name: Lighting Design and Operation
+    description: ''
+    blurb: ''
+    videos: []
+    images: []
+location: ''
+date: ''
+designer: ''
+credits:
+  - label: Lighting design and operation
+    value: Psion Systems
+press: []
+blurb: ''
+videos: []
+localClips:
+  - /projects/esoteric/esoteric1.mp4
+  - /projects/esoteric/esoteric2.mp4
+images:
+  - /projects/esoteric/images/0.jpg
+  - /projects/esoteric/images/1.jpg

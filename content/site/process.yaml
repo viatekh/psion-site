@@ -1,0 +1,17 @@
+headline: How it goes.
+intro: Same seven steps for a festival stage or a pair of decks.
+steps:
+  - name: Hello
+    body: Email or Instagram. A rough idea is plenty.
+  - name: Talk
+    body: A call about the brief, the space, the budget and the deadline. We'll tell you what's actually possible.
+  - name: Plan
+    body: Scope, timeline and price, written down. The price only moves if the job does.
+  - name: Book
+    body: A deposit holds the date, the kit and the crew.
+  - name: Build
+    body: Design, fabrication, programming. All of it built and tested in the workshop before it goes near a van.
+  - name: Show
+    body: We install it, run it and take it down. You watch.
+  - name: After
+    body: 'Final invoice. A debrief if you want one: what worked, what we''d change.'

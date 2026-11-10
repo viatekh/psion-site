@@ -2,11 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { TopNav } from "@/components/TopNav";
 import { HeroReel } from "@/components/HeroReel";
+import { getHome } from "@/data/content";
 import { CornerBrackets, Crosshair, RingCircle } from "@/components/Decoration";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
-export default function Home() {
+export default async function Home() {
+  const home = await getHome();
   return (
     <div className="flex flex-1 flex-col">
       <TopNav />
@@ -22,12 +24,11 @@ export default function Home() {
           </div>
 
           <h1 className="mt-6 max-w-xl font-mono text-2xl font-medium uppercase tracking-[0.1em] text-accent sm:text-3xl">
-            Sound — Light — Experience Design
+            {home.heading}
           </h1>
 
           <p className="mt-8 max-w-md text-lg leading-relaxed text-foreground/90">
-            Light, LED and sound for festivals, clubs, churches and fields. Big rigs, small rigs,
-            or just a pair of decks.
+            {home.intro}
           </p>
 
           <nav className="mt-10 flex flex-wrap gap-3">
