@@ -7,7 +7,8 @@ import { usePathname } from "next/navigation";
 const links = [
   { href: "/projects", label: "Projects" },
   // "/deploy" is intentionally hidden from nav for now — page stays live, just unlinked.
-  { href: "/process", label: "Process" },
+  // Process is switched off for now. To bring it back: rename src/app/_process to src/app/process,
+  // add { href: "/process", label: "Process" } here, and add it back to sitemap.ts and keystatic.config.ts.
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];

@@ -59,7 +59,7 @@ export default config({
     brand: { name: "Psion Systems" },
     navigation: {
       Work: ["projects", "projectOrder", "other"],
-      Pages: ["home", "about", "process"],
+      Pages: ["home", "about"], // "process" is switched off for now
     },
   },
 

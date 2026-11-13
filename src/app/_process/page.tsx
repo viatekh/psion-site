@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/process" },
 };
 
-
+// Switched off for now: the underscore on this folder keeps it out of the site.
 export default async function ProcessPage() {
   const { headline, intro, steps } = await getProcess();
   return (
